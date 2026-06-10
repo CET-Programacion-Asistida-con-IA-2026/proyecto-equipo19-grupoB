@@ -1,35 +1,116 @@
-## Grupo A/B - Equipo {numero}
+## Grupo B - Equipo 19
 _Curso de Programación Asistida con IA - Chicas en Tecnología_ 🚀
 
-```⚠️ Dejar la opción correcta entre Grupo A (Grupo de 17 a 19hs) y Grupo B (Grupo de 19 a 21hs) y agregar el número de equipo ⚠️```
+En este repositorio se presenta el sitio web realizado durante el curso de programación frontend de CET.
 
-En este repositorio, se presenta el sitio web realizado durante el curso de programación frontend de CET.
+<!--🚀 Link del proyecto en vivo: (agregar cuando esté desplegado)-->
 
-### 📄 Entregas
-**Entrega #1**: planificación de la solución y primeros resultados que obtengamos con la IA:
+---
 
-📝 Edición del Archivo README incluyendo:
-- Definición de la problemática que eligieron abordar
-- Relación con los *Objetivos de Desarrollo Sostenible (ODS)*[^1]
-- Explicación de la solución tecnológica que están desarrollando
-> [!TIP]
-> Aprovechen los [formatos del README](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) para escribir diferentes secciones
+## 🧩Problemática
 
-🎨 Moodboard
+El mundo del arte carece de un espacio digital profesional pensado específicamente para artistas. Las redes existentes (LinkedIn, Instagram) no combinan en un solo lugar la posibilidad de mostrar portafolio, conectar con pares y acceder a convocatorias reales. Los artistas quedan dispersos entre plataformas que no entienden sus necesidades.
 
-🧩 Archivos generados con asistencia de IA: ```index.html```, ```style.css```, ```script.js```
+---
 
+## Objetivos de Desarrollo Sostenible (ODS) 🎯
 
-**Entrega #2 (Final)**: se esperan modificaciones en el código respecto a la entrega anterior, que pueden incluir nuevos archivos o extensión de los existentes (debe haber al menos un archivo de cada lenguaje visto - HTML, CSS y Javascript)
+Nuestro proyecto se relaciona directamente con:
 
-💡 Es una buena idea llevar un registro de lo que cambiamos. Por ejemplo
+- **ODS 8 — Trabajo decente y crecimiento económico:** Promovemos el acceso a oportunidades laborales y convocatorias para artistas, fomentando el crecimiento económico inclusivo y el empleo en el sector cultural.
+- **ODS 9 — Industria, innovación e infraestructura:** Construimos una infraestructura digital innovadora que conecta a artistas con el ecosistema profesional y cultural.
+- **ODS 10 — Reducción de las desigualdades:** Democratizamos el acceso a convocatorias y redes de contacto para artistas de todo el país, independientemente de su ubicación o trayectoria.
+
+---
+
+## Implementación de la problemática
+
+La solución fue implementar una red profesional estilo LinkedIn pero exclusiva para artistas, donde puedan conectar con pares, mostrar su portafolio y postularse a convocatorias abiertas. La plataforma se llama **"me invitó una amiga"** y ofrece:
+
+- **Landing page con autenticación** simulada (login, registro y usuarios demo)
+- **Feed de publicaciones** donde los artistas comparten proyectos con imagen, disciplina y etiquetas
+- **Sección Explorar** con filtros por disciplina para descubrir nuevos trabajos
+- **Convocatorias** con listado de oportunidades reales y simulación de postulación
+- **Perfil de usuario** editable con estadísticas, bio y grilla de proyectos propios
+- **Perfiles de artistas** con modal de detalle y sistema de seguimiento
+- **Búsqueda en tiempo real** de proyectos y artistas
+- **Sistema de notificaciones** y toasts de feedback
+
+---
+
+## 🎨 Moodboard
+
+El sistema de diseño está inspirado en revistas de arte independiente y galerías contemporáneas:
+
+- **Color principal:** Carmesí profundo `#9b1c2e` — evoca la alfombra roja del cine y el teatro
+- **Acento:** Dorado apagado `#c9a84c` — para detalles tipográficos y elementos clave
+- **Fondos:** Tonos "paper" `#fefcfc / #faf5f6` — minimalismo cálido, evita el blanco puro
+- **Tipografías:** Playfair Display (serif elegante para títulos) + Jost (sans-serif limpia para cuerpo)
+- **Geometría:** Arcos y círculos en pseudo-elementos `::before / ::after` que rompen la rigidez ortogonal sin perder orden profesional
+
+---
+
+## 💻 Tecnologías utilizadas
+
+- **HTML5** — Estructuración semántica y accesible del contenido
+- **CSS3** — Variables nativas (`:root`) para tokens de diseño, Flexbox y Grid para layouts, transiciones, pseudo-elementos decorativos y diseño responsivo
+- **JavaScript (Vanilla)** — Manipulación dinámica del DOM, FileReader API para previsualización de imágenes, gestión de estado global sin frameworks
+
+---
+
+## 📂 Arquitectura del proyecto
+
+El repositorio mantiene una arquitectura modular separada por responsabilidades:
 ```
-- Agregamos Bootstrap para el carrousel de imágenes...
-- Modificamos el texto de la sección de bienvenida...
-- Transformamos los textos sobre redes sociales en links...
+me-invito-una-amiga/
+├── index.html            ← Solo HTML + orquestación (carga módulos)
+├── css/
+│   ├── variables.css     ← :root tokens, reset global
+│   ├── components.css    ← Botones y campos compartidos
+│   ├── landing.css       ← Landing page y formulario auth
+│   ├── layout.css        ← Topbar, sidebars, navegación
+│   ├── feed.css          ← Tarjetas del feed y publish box
+│   ├── profile.css       ← Página de perfil y grilla de proyectos
+│   ├── modal.css         ← Modal de publicación
+│   └── responsive.css    ← Breakpoints
+└── js/
+    ├── data.js           ← USERS, SEED_POSTS, estado global
+    ├── auth.js           ← login(), register(), loginDemo()
+    ├── navigation.js     ← showSection()
+    ├── feed.js           ← buildFeed(), makePostCard(), toggleLike()
+    ├── profile.js        ← buildSidebar(), updateProfileStats(), sugeridos
+    ├── explore.js        ← buildExplore(), filterExplore()
+    └── modal.js          ← openModal(), publishProject(), tags 
 ```
+---
 
-Ahora si, ¡A programar! 🚀
+## ▶ Cómo ejecutar este proyecto
 
+Este proyecto usa múltiples archivos CSS y JS enlazados externamente, por lo que **no funciona abriéndolo directamente con `file:///`** en el navegador. Es necesario usar un servidor local.
 
-[^1]: Los Objetivos de Desarrollo Sostenible u Objetivos Globales, también conocidos como Agenda 2030, son 17 objetivos globales interconectados diseñados para ser un «plan para lograr un futuro mejor y más sostenible para todos». Más información en https://www.un.org/sustainabledevelopment/es/objetivos-de-desarrollo-sostenible/
+**Opción A — Live Server (recomendada para VS Code):**
+1. Instalar la extensión **Live Server** de Ritwick Dey en VS Code
+2. Click derecho sobre `index.html` → **"Open with Live Server"**
+3. El proyecto abre en `http://127.0.0.1:5500`
+
+**Opción B — Terminal:**
+```bash
+npx serve .
+```
+Luego abrir la URL que aparece en consola (generalmente `http://localhost:3000`).
+
+---
+
+## Autoras 👩‍💻
+
+| Nombre | GitHub |
+|---|---|
+| Hannah Chodos Breier | (agregar) |
+| Brisa Escobar | BrisaAnahiEscobar |
+| Nicole González | nicolee6 |
+| Maurehen Torres | Maurehen29-05 |
+| Valentina Valente | valen-valente |
+
+---
+
+_Proyecto desarrollado en el marco del programa **Chicas en Tecnología** — 2026_

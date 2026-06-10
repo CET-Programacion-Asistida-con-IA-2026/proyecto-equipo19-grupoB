@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>me invitó una amiga</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --crimson:#9b1c2e;
+  --crimson2:#b52238;
+  --crimson3:#7a1524;
+  --crimson-deep:#4a0c17;
+  --crimson-light:#f5dde1;
+  --crimson-pale:#fdf0f2;
+  --gold:#c9a84c;
+  --gold2:#e8c86a;
+  --gold-light:#faf3e0;
+  --ink:#1a0a0d;
+  --ink2:#3d1e25;
+  --ink3:#8a6068;
+  --paper:#fefcfc;
+  --paper2:#faf5f6;
+  --paper3:#f3eaec;
+  --border:#e8d4d8;
+  --border2:#d4b8be;
+  --radius:16px;
+  --radius-sm:10px;
+  --sidebar:260px;
+}
+body{font-family:'Jost',sans-serif;background:var(--paper3);color:var(--ink);min-height:100vh;font-size:15px}
+
+/* ── LANDING ─────────────────────────────── */
+#landing{display:flex;min-height:100vh;align-items:stretch}
+
+.landing-left{
+  flex:1;background:var(--crimson-deep);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem;position:relative;overflow:hidden;
+}
+/* grande arco superior */
+.landing-left::before{
+  content:'';position:absolute;top:-180px;right:-120px;
+  width:520px;height:520px;
+  border:1.5px solid rgba(201,168,76,0.18);
+  border-radius:50%;
+}
+/* arco inferior */
+.landing-left::after{
+  content:'';position:absolute;bottom:-200px;left:-100px;
+  width:420px;height:420px;
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:50%;
+}
+/* tercer arco decorativo */
+.lc-arc{
+  position:absolute;top:40%;left:-160px;
+  width:320px;height:320px;
+  border:1px solid rgba(201,168,76,0.1);
+  border-radius:50%;pointer-events:none;
+}
+
+.brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:400;color:#fff;
+  letter-spacing:-0.5px;line-height:1.15;
+}
+.brand-name span{font-style:italic;color:var(--gold2)}
+.brand-tagline{font-size:0.95rem;color:rgba(255,255,255,0.6);margin-top:1rem;font-weight:300;line-height:1.7;max-width:300px}
+
+.landing-art-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2.5rem;max-width:320px}
+.art-thumb{border-radius:20px;overflow:hidden;aspect-ratio:1;position:relative}
+.art-thumb:nth-child(1){background:#6a1020;aspect-ratio:auto;height:90px;border-radius:40px 20px 20px 20px}
+.art-thumb:nth-child(2){background:#3d0a14;border-radius:20px 40px 20px 20px}
+.art-thumb:nth-child(3){background:#7a1830;border-radius:20px 20px 40px 20px}
+.art-thumb:nth-child(4){background:#4a0f1e;aspect-ratio:auto;height:90px;border-radius:20px 20px 20px 40px}
+.art-thumb-label{position:absolute;bottom:8px;left:10px;font-size:10px;color:rgba(255,255,255,0.4);font-weight:300;letter-spacing:0.05em;text-transform:uppercase}
+.thumb-arc{width:44px;height:44px;border:1px solid rgba(255,255,255,0.15);border-radius:50%;margin:18px auto}
+.thumb-arc2{width:30px;height:30px;border:1px solid rgba(201,168,76,0.2);border-radius:50%;margin:10px auto}
+.thumb-line{width:50px;height:1px;background:rgba(255,255,255,0.12);margin:20px auto;border-radius:1px}
+.thumb-dot{width:10px;height:10px;border-radius:50%;background:rgba(201,168,76,0.25);margin:25px auto}
+
+.landing-right{
+  width:460px;background:var(--paper);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 3.5rem;position:relative;overflow:hidden;
+}
+/* curva decorativa en la esquina del form */
+.landing-right::before{
+  content:'';position:absolute;bottom:-80px;right:-80px;
+  width:200px;height:200px;
+  border:1px solid rgba(155,28,46,0.07);
+  border-radius:50%;pointer-events:none;
+}
+
+.auth-tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.auth-tab{background:none;border:none;padding:0.75rem 0;margin-right:2rem;font-family:'Jost',sans-serif;font-size:0.9rem;color:var(--ink3);cursor:pointer;position:relative;transition:color 0.2s}
+.auth-tab.active{color:var(--crimson);font-weight:500}
+.auth-tab.active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--crimson)}
+.auth-title{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem}
+.auth-sub{font-size:0.85rem;color:var(--ink3);margin-bottom:2rem;font-weight:300}
+
+.field-group{margin-bottom:1.2rem}
+.field-label{display:block;font-size:0.72rem;font-weight:500;color:var(--ink2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.07em}
+.field-input{
+  width:100%;padding:0.7rem 1.1rem;
+  border:1px solid var(--border);border-radius:var(--radius);
+  font-family:'Jost',sans-serif;font-size:0.9rem;
+  background:var(--paper);color:var(--ink);
+  transition:border-color 0.2s,box-shadow 0.2s;outline:none;
+}
+.field-input:focus{border-color:var(--crimson);box-shadow:0 0 0 3px rgba(155,28,46,0.08)}
+.field-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%238a6068' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+
+.btn-primary{
+  width:100%;padding:0.85rem;
+  background:var(--crimson);color:#fff;border:none;
+  border-radius:var(--radius);font-family:'Jost',sans-serif;
+  font-size:0.9rem;font-weight:500;cursor:pointer;
+  transition:background 0.2s,transform 0.1s;letter-spacing:0.04em;
+}
+.btn-primary:hover{background:var(--crimson2)}
+.btn-primary:active{transform:scale(0.99)}
+
+.auth-divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;color:var(--ink3);font-size:0.8rem}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.demo-users{display:flex;flex-direction:column;gap:8px}
+.demo-user-btn{
+  padding:0.65rem 1rem;border:1px solid var(--border);
+  border-radius:var(--radius);background:none;cursor:pointer;
+  display:flex;align-items:center;gap:10px;
+  transition:border-color 0.2s,background 0.2s;text-align:left;
+}
+.demo-user-btn:hover{border-color:var(--crimson);background:var(--crimson-pale)}
+.demo-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#fff;flex-shrink:0}
+.demo-info{flex:1}
+.demo-name{font-size:0.85rem;font-weight:500;color:var(--ink)}
+.demo-role{font-size:0.75rem;color:var(--ink3)}
+
+/* ── APP LAYOUT ──────────────────────────── */
+#app{display:none;min-height:100vh;background:var(--paper3)}
+
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:var(--paper);border-bottom:1px solid var(--border);
+  height:58px;display:flex;align-items:center;
+  padding:0 1.5rem;gap:1.5rem;
+}
+.topbar-brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;font-weight:400;color:var(--crimson);
+  letter-spacing:-0.3px;white-space:nowrap;line-height:1;
+}
+.topbar-brand span{font-style:italic;color:var(--gold)}
+.topbar-search{flex:1;max-width:400px;position:relative}
+.topbar-search input{
+  width:100%;padding:0.45rem 0.9rem 0.45rem 2.2rem;
+  border:1px solid var(--border);border-radius:24px;
+  font-size:0.85rem;background:var(--paper2);color:var(--ink);
+  outline:none;transition:border-color 0.2s;font-family:'Jost',sans-serif;
+}
+.topbar-search input:focus{border-color:var(--crimson);background:var(--paper)}
+.search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:14px}
+.topbar-nav{display:flex;gap:0.2rem;margin-left:auto}
+.nav-btn{
+  background:none;border:none;padding:0.4rem 0.75rem;
+  border-radius:var(--radius-sm);color:var(--ink3);font-size:0.8rem;
+  cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;
+  transition:color 0.2s,background 0.2s;font-family:'Jost',sans-serif;white-space:nowrap;
+}
+.nav-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+.nav-btn.active{color:var(--crimson)}
+.nav-btn.active svg{stroke:var(--crimson)}
+.nav-btn:hover{background:var(--paper2);color:var(--ink)}
+.topbar-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#fff;cursor:pointer;flex-shrink:0;margin-left:0.5rem;border:2px solid var(--gold)}
+
+/* ── MAIN CONTENT ────────────────────────── */
+.app-body{display:flex;max-width:1200px;margin:0 auto;padding:1.5rem;gap:1.5rem}
+.sidebar-left{width:var(--sidebar);flex-shrink:0}
+.main-feed{flex:1;min-width:0}
+.sidebar-right{width:260px;flex-shrink:0}
+
+/* ── CARDS BASE ──────────────────────────── */
+.card-base{
+  background:var(--paper);border:1px solid var(--border);
+  border-radius:20px;overflow:hidden;
+}
+
+/* ── SIDEBAR PROFILE CARD ────────────────── */
+.profile-card{background:var(--paper);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:1rem}
+.profile-card-cover{
+  height:64px;
+  background:linear-gradient(135deg,var(--crimson-deep) 0%,var(--crimson) 60%,var(--crimson2) 100%);
+  position:relative;overflow:hidden;
+}
+.profile-card-cover::after{
+  content:'';position:absolute;bottom:-30px;right:-30px;
+  width:90px;height:90px;border:1px solid rgba(201,168,76,0.25);
+  border-radius:50%;
+}
+.profile-card-body{padding:0 1rem 1rem;margin-top:-24px}
+.profile-card-avatar{
+  width:48px;height:48px;border-radius:50%;
+  border:3px solid var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:500;color:#fff;margin-bottom:8px;
+}
+.profile-card-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink);line-height:1.2}
+.profile-card-role{font-size:0.75rem;color:var(--ink3);margin:2px 0 8px}
+.profile-card-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.stat-item{text-align:center}
+.stat-num{font-size:1rem;font-weight:500;color:var(--crimson);display:block}
+.stat-label{font-size:0.68rem;color:var(--ink3)}
+
+/* ── SIDE NAV ────────────────────────────── */
+.side-nav{background:var(--paper);border:1px solid var(--border);border-radius:20px;padding:0.5rem 0.5rem;margin-bottom:1rem}
+.side-nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:0.55rem 0.75rem;cursor:pointer;
+  transition:background 0.15s;color:var(--ink2);
+  font-size:0.875rem;border-radius:12px;
+}
+.side-nav-item:hover,.side-nav-item.active{background:var(--crimson-light);color:var(--crimson)}
+.side-nav-item svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+.side-nav-item .badge{margin-left:auto;background:var(--crimson);color:#fff;font-size:10px;padding:1px 6px;border-radius:10px}
+
+/* ── PUBLISH BOX ─────────────────────────── */
+.publish-box{
+  background:var(--paper);border:1px solid var(--border);
+  border-radius:20px;padding:1rem 1.25rem;margin-bottom:1rem;
+}
+.publish-row{display:flex;gap:10px;align-items:center}
+.publish-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#fff;flex-shrink:0;border:2px solid var(--gold)}
+.publish-trigger{
+  flex:1;padding:0.6rem 1.2rem;
+  border:1px solid var(--border);border-radius:24px;
+  background:var(--paper2);color:var(--ink3);
+  font-size:0.875rem;cursor:pointer;text-align:left;
+  transition:border-color 0.2s,background 0.2s;
+  font-family:'Jost',sans-serif;
+}
+.publish-trigger:hover{border-color:var(--crimson);background:var(--paper);color:var(--ink)}
+.publish-actions{display:flex;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border)}
+.pub-action{
+  background:none;border:none;padding:0.45rem 0.75rem;
+  border-radius:var(--radius-sm);color:var(--ink2);font-size:0.8rem;
+  cursor:pointer;display:flex;align-items:center;gap:6px;
+  transition:background 0.15s,color 0.15s;font-family:'Jost',sans-serif;
+}
+.pub-action:hover{background:var(--crimson-light);color:var(--crimson)}
+.pub-action svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+/* ── MODAL ───────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(26,10,13,0.55);z-index:200;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--paper);border-radius:24px;
+  width:100%;max-width:580px;max-height:90vh;overflow-y:auto;
+}
+.modal-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;color:var(--ink)}
+.modal-close{background:none;border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink3);transition:background 0.15s}
+.modal-close:hover{background:var(--paper2)}
+.modal-close svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.modal-body{padding:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.img-upload{
+  border:2px dashed var(--border);border-radius:16px;
+  padding:2rem;text-align:center;cursor:pointer;
+  transition:border-color 0.2s,background 0.2s;position:relative;
+}
+.img-upload:hover{border-color:var(--crimson);background:var(--crimson-pale)}
+.img-upload input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.img-upload-icon{font-size:2rem;color:var(--ink3);margin-bottom:8px}
+.img-upload-text{font-size:0.85rem;color:var(--ink3)}
+.img-preview{width:100%;border-radius:12px;max-height:220px;object-fit:cover;margin-top:0.75rem;display:none}
+.tags-input{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding:0.5rem 0.75rem;border:1px solid var(--border);
+  border-radius:var(--radius);min-height:42px;cursor:text;
+  transition:border-color 0.2s;
+}
+.tags-input:focus-within{border-color:var(--crimson)}
+.tag-pill{background:var(--crimson-light);color:var(--crimson);font-size:0.75rem;padding:3px 10px;border-radius:14px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.tag-pill button{background:none;border:none;cursor:pointer;color:inherit;font-size:14px;line-height:1;padding:0}
+.tags-input-field{border:none;outline:none;font-size:0.85rem;font-family:'Jost',sans-serif;color:var(--ink);min-width:80px;background:none}
+.modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:0.75rem}
+.btn-secondary{
+  padding:0.65rem 1.25rem;border:1px solid var(--border);
+  border-radius:var(--radius);background:none;
+  font-family:'Jost',sans-serif;font-size:0.875rem;
+  cursor:pointer;color:var(--ink2);transition:background 0.15s;
+}
+.btn-secondary:hover{background:var(--paper2)}
+.btn-accent{
+  padding:0.65rem 1.5rem;background:var(--crimson);color:#fff;
+  border:none;border-radius:var(--radius);
+  font-family:'Jost',sans-serif;font-size:0.875rem;font-weight:500;
+  cursor:pointer;transition:background 0.2s;
+}
+.btn-accent:hover{background:var(--crimson2)}
+
+/* ── FEED CARDS ──────────────────────────── */
+.feed-card{
+  background:var(--paper);border:1px solid var(--border);
+  border-radius:20px;margin-bottom:1rem;overflow:hidden;
+}
+.card-header{padding:1rem 1.25rem 0.75rem;display:flex;align-items:flex-start;gap:10px}
+.card-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#fff;flex-shrink:0}
+.card-author-info{flex:1}
+.card-author-name{font-weight:500;font-size:0.9rem;color:var(--ink)}
+.card-author-role{font-size:0.78rem;color:var(--ink3)}
+.card-time{font-size:0.75rem;color:var(--ink3)}
+.card-menu{margin-left:auto;background:none;border:none;cursor:pointer;color:var(--ink3);padding:4px;border-radius:50%;transition:background 0.15s}
+.card-menu:hover{background:var(--paper2)}
+.card-menu svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.card-body{padding:0 1.25rem 0.75rem}
+.card-project-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.card-desc{font-size:0.875rem;color:var(--ink2);line-height:1.6;margin-bottom:10px}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.card-tag{font-size:0.72rem;padding:3px 10px;border-radius:14px;background:var(--gold-light);color:#8a6a1a}
+.card-tag.discipline{background:var(--crimson-light);color:var(--crimson)}
+.card-image{width:100%;max-height:340px;object-fit:cover;display:block;background:var(--paper3)}
+.card-placeholder{height:200px;background:var(--paper2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+/* curva decorativa en placeholders */
+.card-placeholder::before{content:'';position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;border:1px solid rgba(155,28,46,0.1);border-radius:50%}
+.card-placeholder::after{content:'';position:absolute;top:-30px;left:-30px;width:100px;height:100px;border:1px solid rgba(155,28,46,0.07);border-radius:50%}
+.card-placeholder-shape{opacity:0.1;color:var(--crimson);position:relative;z-index:1}
+.card-footer{padding:0.75rem 1.25rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:0.25rem}
+.card-action{
+  background:none;border:none;padding:0.45rem 0.75rem;
+  border-radius:var(--radius-sm);color:var(--ink3);font-size:0.8rem;
+  cursor:pointer;display:flex;align-items:center;gap:5px;
+  transition:background 0.15s,color 0.15s;font-family:'Jost',sans-serif;
+}
+.card-action:hover{background:var(--crimson-light);color:var(--crimson)}
+.card-action.liked{color:var(--crimson)}
+.card-action svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+.card-action.liked svg{fill:var(--crimson-light)}
+.card-action-count{font-size:0.8rem}
+.card-action-sep{margin-left:auto}
+
+/* ── RIGHT SIDEBAR ───────────────────────── */
+.widget{background:var(--paper);border:1px solid var(--border);border-radius:20px;padding:1rem 1.25rem;margin-bottom:1rem}
+.widget-title{
+  font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;
+  color:var(--ink);margin-bottom:0.75rem;padding-bottom:0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.artist-suggest{display:flex;align-items:center;gap:9px;margin-bottom:0.75rem}
+.suggest-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#fff;flex-shrink:0}
+.suggest-info{flex:1;min-width:0}
+.suggest-name{font-size:0.85rem;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.suggest-role{font-size:0.72rem;color:var(--ink3)}
+.btn-follow{
+  padding:0.3rem 0.85rem;border:1px solid var(--crimson);
+  border-radius:20px;background:none;color:var(--crimson);
+  font-size:0.75rem;cursor:pointer;
+  transition:background 0.15s,color 0.15s;
+  white-space:nowrap;font-family:'Jost',sans-serif;
+}
+.btn-follow:hover,.btn-follow.following{background:var(--crimson);color:#fff}
+.discipline-list{display:flex;flex-wrap:wrap;gap:6px}
+.disc-tag{
+  padding:4px 14px;border-radius:20px;
+  border:1px solid var(--border);font-size:0.78rem;
+  cursor:pointer;transition:all 0.15s;color:var(--ink2);
+}
+.disc-tag:hover,.disc-tag.active{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+
+/* ── PROFILE PAGE ────────────────────────── */
+#profile-page{display:none}
+.profile-hero{background:var(--paper);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:1rem}
+.profile-cover{
+  height:120px;position:relative;overflow:hidden;
+  background:var(--crimson-deep);
+}
+/* múltiples arcos en portada */
+.profile-cover::before{
+  content:'';position:absolute;bottom:-50px;right:-50px;
+  width:180px;height:180px;border:1px solid rgba(201,168,76,0.25);
+  border-radius:50%;
+}
+.profile-cover::after{
+  content:'';position:absolute;top:-60px;left:30%;
+  width:220px;height:220px;border:1px solid rgba(255,255,255,0.06);
+  border-radius:50%;
+}
+.profile-cover-edit{position:absolute;right:12px;bottom:12px;z-index:2;background:rgba(0,0,0,0.4);border:none;border-radius:10px;padding:6px 12px;color:#fff;font-size:12px;cursor:pointer;font-family:'Jost',sans-serif}
+.profile-info-row{display:flex;align-items:flex-end;gap:1rem;padding:0 1.5rem;margin-top:-32px}
+.profile-big-avatar{width:80px;height:80px;border-radius:50%;border:4px solid var(--paper);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:500;color:#fff;flex-shrink:0;outline:3px solid var(--gold)}
+.profile-details{flex:1;padding-bottom:1rem}
+.profile-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:600;color:var(--ink);line-height:1.2}
+.profile-role-line{font-size:0.875rem;color:var(--ink3);margin:3px 0}
+.profile-location{font-size:0.8rem;color:var(--ink3);display:flex;align-items:center;gap:4px}
+.profile-location svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.profile-cta{display:flex;gap:0.5rem;padding:0 1.5rem 1.25rem}
+.btn-edit{padding:0.5rem 1.25rem;border:1px solid var(--border);border-radius:20px;background:none;font-size:0.85rem;cursor:pointer;color:var(--ink2);font-family:'Jost',sans-serif;transition:background 0.15s}
+.btn-edit:hover{background:var(--paper2)}
+.profile-bio-section{padding:1rem 1.5rem;border-top:1px solid var(--border)}
+.section-label{font-size:0.72rem;font-weight:500;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink3);margin-bottom:0.5rem}
+.profile-bio-text{font-size:0.875rem;color:var(--ink2);line-height:1.7}
+.profile-stats-row{display:flex;gap:2rem;padding:1rem 1.5rem;border-top:1px solid var(--border)}
+.pstat{text-align:center}
+.pstat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--crimson);display:block}
+.pstat-label{font-size:0.7rem;color:var(--ink3)}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.project-card-grid{
+  background:var(--paper);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;cursor:pointer;
+  transition:transform 0.15s;
+}
+.project-card-grid:hover{transform:translateY(-3px)}
+.project-thumb{height:160px;background:var(--paper2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+/* arco en project thumbnails */
+.project-thumb::after{content:'';position:absolute;bottom:-20px;right:-20px;width:80px;height:80px;border:1px solid rgba(155,28,46,0.1);border-radius:50%;pointer-events:none}
+.project-thumb-placeholder{opacity:0.08;font-size:3rem;position:relative;z-index:1}
+.project-thumb-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.project-card-info{padding:0.75rem 1rem}
+.project-card-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.project-card-cat{font-size:0.73rem;color:var(--ink3)}
+.project-card-likes{font-size:0.73rem;color:var(--ink3);display:flex;align-items:center;gap:4px;margin-top:6px}
+.project-card-likes svg{width:12px;height:12px;stroke:var(--crimson);fill:var(--crimson-light);stroke-width:1.5}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media(max-width:900px){
+  .sidebar-right{display:none}
+  #landing{flex-direction:column}
+  .landing-left{min-height:220px;padding:2rem}
+  .landing-right{width:100%;padding:2rem}
+}
+@media(max-width:640px){
+  .sidebar-left{display:none}
+  .app-body{padding:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LANDING ═══════════ -->
+<div id="landing">
+  <div class="landing-left">
+    <div class="brand-name">me invitó<span> una amiga</span></div>
+    <p class="brand-tagline">La red profesional para artistas. Conectá tu trabajo con el mundo.</p>
+    <div class="landing-art-grid">
+      <div class="art-thumb"><div class="shape1"></div><span class="art-thumb-label">Escultura</span></div>
+      <div class="art-thumb"><div class="shape2"></div><span class="art-thumb-label">Diseño</span></div>
+      <div class="art-thumb"><div class="shape3"></div><span class="art-thumb-label">Ilustración</span></div>
+      <div class="art-thumb"><div class="shape4"></div><span class="art-thumb-label">Fotografía</span></div>
+    </div>
+  </div>
+  <div class="landing-right">
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchTab('login')">Iniciar sesión</button>
+      <button class="auth-tab" onclick="switchTab('register')">Crear cuenta</button>
+    </div>
+
+    <div id="login-form">
+      <h2 class="auth-title">Bienvenida de vuelta</h2>
+      <p class="auth-sub">Ingresá con tu usuario para continuar</p>
+      <div class="field-group">
+        <label class="field-label">Usuario</label>
+        <input class="field-input" type="text" id="login-user" placeholder="@tuusuario">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Contraseña</label>
+        <input class="field-input" type="password" id="login-pass" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" onclick="login()">Entrar</button>
+      <div class="auth-divider">o probá con una cuenta demo</div>
+      <div class="demo-users">
+        <button class="demo-user-btn" onclick="loginDemo('sofiamorales')">
+          <div class="demo-avatar" style="background:#9b1c2e">SM</div>
+          <div class="demo-info"><div class="demo-name">@sofiamorales</div><div class="demo-role">Ilustradora · Buenos Aires</div></div>
+        </button>
+        <button class="demo-user-btn" onclick="loginDemo('pablorojas')">
+          <div class="demo-avatar" style="background:#6b1420">PR</div>
+          <div class="demo-info"><div class="demo-name">@pablorojas</div><div class="demo-role">Fotógrafo · Córdoba</div></div>
+        </button>
+        <button class="demo-user-btn" onclick="loginDemo('marinacast')">
+          <div class="demo-avatar" style="background:#4a0c17">MC</div>
+          <div class="demo-info"><div class="demo-name">@marinacast</div><div class="demo-role">Escultora · Rosario</div></div>
+        </button>
+      </div>
+    </div>
+
+    <div id="register-form" style="display:none">
+      <h2 class="auth-title">Creá tu perfil</h2>
+      <p class="auth-sub">Unite a la comunidad de artistas</p>
+      <div class="field-group">
+        <label class="field-label">Nombre completo</label>
+        <input class="field-input" type="text" id="reg-name" placeholder="Tu nombre">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Usuario</label>
+        <input class="field-input" type="text" id="reg-user" placeholder="@tuusuario">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Disciplina artística</label>
+        <select class="field-input field-select" id="reg-discipline">
+          <option value="">Seleccioná tu disciplina</option>
+          <option>Ilustración</option>
+          <option>Fotografía</option>
+          <option>Escultura</option>
+          <option>Pintura</option>
+          <option>Diseño gráfico</option>
+          <option>Arte digital</option>
+          <option>Cerámica</option>
+          <option>Instalación</option>
+          <option>Performance</option>
+          <option>Otra</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Contraseña</label>
+        <input class="field-input" type="password" id="reg-pass" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" onclick="register()">Crear mi cuenta</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ APP ═══════════ -->
+<div id="app">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-brand">me invitó<span> una amiga</span></div>
+    <div class="topbar-search">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Buscar artistas, proyectos, disciplinas...">
+    </div>
+    <div class="topbar-nav">
+      <button class="nav-btn active" onclick="showSection('feed')" id="nav-feed">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Inicio
+      </button>
+      <button class="nav-btn" onclick="showSection('explore')" id="nav-explore">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Explorar
+      </button>
+      <button class="nav-btn" onclick="showSection('profile')" id="nav-profile">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Mi perfil
+      </button>
+    </div>
+    <div class="topbar-avatar" id="topbar-avatar" onclick="showSection('profile')"></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="app-body">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar-left">
+      <div class="profile-card" id="sidebar-profile-card"></div>
+      <div class="side-nav">
+        <div class="side-nav-item active" onclick="showSection('feed')">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Feed
+        </div>
+        <div class="side-nav-item" onclick="showSection('profile')">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Mis proyectos
+        </div>
+        <div class="side-nav-item">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Red
+          <span class="badge">3</span>
+        </div>
+        <div class="side-nav-item">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          Estadísticas
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN FEED -->
+    <div class="main-feed">
+
+      <!-- FEED SECTION -->
+      <div id="section-feed">
+        <!-- Publish box -->
+        <div class="publish-box">
+          <div class="publish-row">
+            <div class="publish-avatar" id="publish-avatar"></div>
+            <button class="publish-trigger" onclick="openModal()">¿Qué proyecto querés compartir hoy?</button>
+          </div>
+          <div class="publish-actions">
+            <button class="pub-action" onclick="openModal()">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Imagen
+            </button>
+            <button class="pub-action" onclick="openModal()">
+              <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              Video
+            </button>
+            <button class="pub-action" onclick="openModal()">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Proyecto
+            </button>
+          </div>
+        </div>
+        <!-- Feed posts will be injected here -->
+        <div id="feed-posts"></div>
+      </div>
+
+      <!-- EXPLORE SECTION -->
+      <div id="section-explore" style="display:none">
+        <div style="background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem">
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.75rem">Explorar por disciplina</h2>
+          <div class="discipline-list" id="explore-disciplines"></div>
+        </div>
+        <div id="explore-grid" class="projects-grid"></div>
+      </div>
+
+      <!-- PROFILE SECTION -->
+      <div id="section-profile" style="display:none">
+        <div class="profile-hero">
+          <div class="profile-cover">
+            <button class="profile-cover-edit" onclick="alert('Editor de portada próximamente')">Editar portada</button>
+          </div>
+          <div class="profile-info-row">
+            <div class="profile-big-avatar" id="profile-big-avatar"></div>
+            <div class="profile-details">
+              <div class="profile-name" id="profile-name-text"></div>
+              <div class="profile-role-line" id="profile-role-text"></div>
+              <div class="profile-location">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span id="profile-location-text">Argentina</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-cta">
+            <button class="btn-edit" onclick="alert('Editar perfil — próximamente')">
+              <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Editar perfil
+            </button>
+            <button class="btn-accent" onclick="openModal()">+ Nuevo proyecto</button>
+          </div>
+          <div class="profile-stats-row">
+            <div class="pstat"><span class="pstat-num" id="stat-projects">0</span><span class="pstat-label">Proyectos</span></div>
+            <div class="pstat"><span class="pstat-num">127</span><span class="pstat-label">Seguidores</span></div>
+            <div class="pstat"><span class="pstat-num">84</span><span class="pstat-label">Siguiendo</span></div>
+            <div class="pstat"><span class="pstat-num" id="stat-likes">0</span><span class="pstat-label">Me gusta recibidos</span></div>
+          </div>
+          <div class="profile-bio-section">
+            <div class="section-label">Bio</div>
+            <p class="profile-bio-text" id="profile-bio-text">Artista visual explorando los límites entre lo analógico y lo digital. Mi trabajo reflexiona sobre la memoria, el cuerpo y el territorio.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.25rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600">Proyectos publicados</h3>
+            <button class="btn-accent" onclick="openModal()" style="font-size:0.8rem;padding:0.4rem 1rem">+ Agregar</button>
+          </div>
+          <div class="projects-grid" id="profile-projects-grid">
+            <div style="text-align:center;padding:2.5rem;color:var(--ink3);grid-column:1/-1;border:2px dashed var(--border);border-radius:10px">
+              <div style="font-size:2rem;margin-bottom:8px;opacity:0.3">🎨</div>
+              <p style="font-size:0.875rem">Aún no publicaste proyectos.<br>¡Compartí tu trabajo con la comunidad!</p>
+              <button class="btn-accent" onclick="openModal()" style="margin-top:1rem;font-size:0.82rem;padding:0.45rem 1rem">Publicar primer proyecto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="sidebar-right">
+      <div class="widget">
+        <div class="widget-title">Artistas sugeridos</div>
+        <div id="suggested-artists"></div>
+        <a href="#" style="font-size:0.8rem;color:var(--accent);text-decoration:none" onclick="showSection('explore');return false">Ver más →</a>
+      </div>
+      <div class="widget">
+        <div class="widget-title">Disciplinas activas</div>
+        <div class="discipline-list">
+          <span class="disc-tag active">Ilustración</span>
+          <span class="disc-tag">Fotografía</span>
+          <span class="disc-tag">Escultura</span>
+          <span class="disc-tag">Pintura</span>
+          <span class="disc-tag">Arte digital</span>
+          <span class="disc-tag">Cerámica</span>
+        </div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">Convocatorias</div>
+        <div style="font-size:0.82rem;color:var(--ink2);line-height:1.7">
+          <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <div style="font-weight:500;color:var(--ink)">Bienal de Arte Joven 2026</div>
+            <div style="color:var(--ink3);font-size:0.75rem">Cierre: 30 jul · CCEBA</div>
+          </div>
+          <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <div style="font-weight:500;color:var(--ink)">Premio Klemm</div>
+            <div style="color:var(--ink3);font-size:0.75rem">Cierre: 15 ago · Fundación Klemm</div>
+          </div>
+          <div>
+            <div style="font-weight:500;color:var(--ink)">Residencia en Berlín</div>
+            <div style="color:var(--ink3);font-size:0.75rem">Cierre: 1 sep · Goethe Institut</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL NUEVO PROYECTO ═══════════ -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Publicar proyecto</div>
+      <button class="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label class="field-label">Título del proyecto</label>
+        <input class="field-input" type="text" id="proj-title" placeholder="Ej: Serie fotográfica «Raíces»">
+      </div>
+      <div class="form-row">
+        <div class="field-group">
+          <label class="field-label">Disciplina</label>
+          <select class="field-input field-select" id="proj-discipline">
+            <option value="">Seleccioná</option>
+            <option>Ilustración</option>
+            <option>Fotografía</option>
+            <option>Escultura</option>
+            <option>Pintura</option>
+            <option>Diseño gráfico</option>
+            <option>Arte digital</option>
+            <option>Cerámica</option>
+            <option>Instalación</option>
+            <option>Performance</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Año</label>
+          <input class="field-input" type="number" id="proj-year" placeholder="2026" min="1900" max="2099">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Descripción</label>
+        <textarea class="field-input" id="proj-desc" rows="3" placeholder="Contá de qué trata tu proyecto, qué técnica usaste, qué querías explorar..."></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Imagen del proyecto</label>
+        <div class="img-upload" id="img-upload-area">
+          <input type="file" accept="image/*" onchange="previewImage(this)">
+          <div class="img-upload-icon">🖼</div>
+          <div class="img-upload-text">Arrastrá o hacé click para subir una imagen<br><span style="font-size:0.72rem;color:var(--ink3)">JPG, PNG, WEBP · hasta 10MB</span></div>
+          <img class="img-preview" id="img-preview">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Etiquetas</label>
+        <div class="tags-input" id="tags-container" onclick="document.getElementById('tag-input').focus()">
+          <input class="tags-input-field" id="tag-input" placeholder="Escribí y presioná Enter" onkeydown="handleTagInput(event)">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+      <button class="btn-accent" onclick="publishProject()">Publicar proyecto</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══ DATA ═══════════════════════════════════════════
+const USERS = {
+  sofiamorales:{name:'Sofía Morales',handle:'sofiamorales',role:'Ilustradora',location:'Buenos Aires',color:'#2d4a3e',initials:'SM',bio:'Ilustradora especializada en narrativa visual y books de autor. Mi trabajo mezcla técnica tradicional con herramientas digitales.'},
+  pablorojas:{name:'Pablo Rojas',handle:'pablorojas',role:'Fotógrafo',location:'Córdoba',color:'#4a3d2d',initials:'PR',bio:'Fotógrafo documental. Exploro comunidades y territorios a través del retrato.'},
+  marinacast:{name:'Marina Castillo',handle:'marinacast',role:'Escultora',location:'Rosario',color:'#3d2d4a',initials:'MC',bio:'Trabajo con materiales naturales — madera, piedra, barro — para crear piezas que dialogan con el espacio.'},
+};
+
+const SEED_POSTS = [
+  {id:1,user:'sofiamorales',title:'Serie «Memoria Botánica»',desc:'Colección de 12 ilustraciones que exploran la relación entre la memoria afectiva y las plantas medicinales del noroeste argentino. Técnica mixta: tinta china y acuarela.',discipline:'Ilustración',tags:['tintachina','acuarela','botánica','identidad'],likes:34,liked:false,comments:8,time:'hace 2h',color:'#d4e8e0',shape:'circle'},
+  {id:2,user:'pablorojas',title:'Retrato de la Quebrada',desc:'Serie documental sobre los últimos tejedores de la Quebrada de Humahuaca. Fotografía analógica en blanco y negro.',discipline:'Fotografía',tags:['documental','bnw','patrimonio','Jujuy'],likes:67,liked:false,comments:15,time:'hace 5h',color:'#f5e9c8',shape:'rect'},
+  {id:3,user:'marinacast',title:'Instalación «Raíz Partida»',desc:'Pieza site-specific para la Trienal de Rosario. Madera de algarrobo intervenida con resina y tierra de distintas provincias.',discipline:'Escultura',tags:['instalación','madera','territorio'],likes:89,liked:false,comments:22,time:'ayer',color:'#e8d4e8',shape:'triangle'},
+];
+
+let currentUser = null;
+let posts = [...SEED_POSTS];
+let userProjects = [];
+let tags = [];
+
+// ═══ AUTH ══════════════════════════════════════════
+function switchTab(tab){
+  document.querySelectorAll('.auth-tab').forEach((t,i)=>t.classList.toggle('active',i===(tab==='login'?0:1)));
+  document.getElementById('login-form').style.display=tab==='login'?'block':'none';
+  document.getElementById('register-form').style.display=tab==='register'?'block':'none';
+}
+
+function loginDemo(handle){
+  currentUser=USERS[handle];
+  enterApp();
+}
+
+function login(){
+  const h=document.getElementById('login-user').value.replace('@','');
+  if(USERS[h]){currentUser=USERS[h];enterApp();}
+  else if(h){alert('Usuario no encontrado. Probá con una cuenta demo.');}
+  else{alert('Ingresá tu usuario.');}
+}
+
+function register(){
+  const n=document.getElementById('reg-name').value.trim();
+  const u=document.getElementById('reg-user').value.replace('@','').trim();
+  const d=document.getElementById('reg-discipline').value;
+  if(!n||!u||!d){alert('Completá todos los campos.');return;}
+  const handle=u.toLowerCase().replace(/\s+/g,'');
+  currentUser={name:n,handle,role:d,location:'Argentina',color:'#'+Math.floor(Math.random()*0x444444+0x222222).toString(16),initials:n.split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase(),bio:'Artista en la comunidad.'};
+  USERS[handle]=currentUser;
+  enterApp();
+}
+
+function enterApp(){
+  document.getElementById('landing').style.display='none';
+  document.getElementById('app').style.display='block';
+  buildSidebar();
+  buildFeed();
+  buildSuggestedArtists();
+  buildExplore();
+}
+
+// ═══ SIDEBAR / PROFILE ════════════════════════════
+function buildSidebar(){
+  const u=currentUser;
+  // topbar avatar
+  const ta=document.getElementById('topbar-avatar');
+  ta.textContent=u.initials;ta.style.background=u.color;
+  // publish avatar
+  const pa=document.getElementById('publish-avatar');
+  pa.textContent=u.initials;pa.style.background=u.color;
+  // sidebar card
+  document.getElementById('sidebar-profile-card').innerHTML=`
+    <div class="profile-card-cover"></div>
+    <div class="profile-card-body">
+      <div class="profile-card-avatar" style="background:${u.color}">${u.initials}</div>
+      <div class="profile-card-name">${u.name}</div>
+      <div class="profile-card-role">@${u.handle} · ${u.role}</div>
+      <div class="profile-card-stats">
+        <div class="stat-item"><span class="stat-num" id="sb-proj-count">${userProjects.length}</span><span class="stat-label">Proyectos</span></div>
+        <div class="stat-item"><span class="stat-num">127</span><span class="stat-label">Seguidores</span></div>
+      </div>
+    </div>`;
+  // profile page
+  document.getElementById('profile-big-avatar').textContent=u.initials;
+  document.getElementById('profile-big-avatar').style.background=u.color;
+  document.getElementById('profile-name-text').textContent=u.name;
+  document.getElementById('profile-role-text').textContent=u.role+' · @'+u.handle;
+  document.getElementById('profile-location-text').textContent=u.location;
+  document.getElementById('profile-bio-text').textContent=u.bio;
+  updateProfileStats();
+}
+
+function updateProfileStats(){
+  const total=userProjects.length;
+  const likes=userProjects.reduce((a,p)=>a+p.likes,0);
+  const el1=document.getElementById('stat-projects');
+  const el2=document.getElementById('stat-likes');
+  const el3=document.getElementById('sb-proj-count');
+  if(el1)el1.textContent=total;
+  if(el2)el2.textContent=likes;
+  if(el3)el3.textContent=total;
+}
+
+// ═══ FEED ═══════════════════════════════════════════
+function buildFeed(){
+  const container=document.getElementById('feed-posts');
+  container.innerHTML='';
+  posts.forEach(p=>container.appendChild(makePostCard(p)));
+}
+
+function makePostCard(p){
+  const u=USERS[p.user]||{name:p.user,initials:p.user.slice(0,2).toUpperCase(),color:'#888',role:'Artista'};
+  const card=document.createElement('div');
+  card.className='feed-card';
+  const shapes={
+    circle:`<svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/><circle cx="40" cy="40" r="15" fill="currentColor" opacity="0.15"/></svg>`,
+    rect:`<svg width="80" height="80" viewBox="0 0 80 80"><rect x="10" y="10" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/><rect x="25" y="25" width="30" height="30" fill="currentColor" opacity="0.15"/></svg>`,
+    triangle:`<svg width="80" height="80" viewBox="0 0 80 80"><polygon points="40,8 72,68 8,68" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/><polygon points="40,24 60,60 20,60" fill="currentColor" opacity="0.15"/></svg>`,
+  };
+  card.innerHTML=`
+    <div class="card-header">
+      <div class="card-avatar" style="background:${u.color}">${u.initials}</div>
+      <div class="card-author-info">
+        <div class="card-author-name">${u.name}</div>
+        <div class="card-author-role">${u.role} · ${p.time}</div>
+      </div>
+      <button class="card-menu"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+    </div>
+    <div class="card-body">
+      <div class="card-project-title">${p.title}</div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-tags">
+        <span class="card-tag discipline">${p.discipline}</span>
+        ${p.tags.map(t=>`<span class="card-tag">#${t}</span>`).join('')}
+      </div>
+    </div>
+    ${p.imageUrl?`<img class="card-image" src="${p.imageUrl}" alt="${p.title}">`:`
+    <div class="card-placeholder" style="background:${p.color||'var(--paper2)'}">
+      <div class="card-placeholder-shape" style="color:${u.color}">${shapes[p.shape]||shapes.circle}</div>
+    </div>`}
+    <div class="card-footer">
+      <button class="card-action${p.liked?' liked':''}" onclick="toggleLike(${p.id},this)">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="card-action-count">${p.likes}</span>
+      </button>
+      <button class="card-action">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="card-action-count">${p.comments}</span>
+      </button>
+      <button class="card-action card-action-sep">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Compartir
+      </button>
+    </div>`;
+  return card;
+}
+
+function toggleLike(id,btn){
+  const p=posts.find(x=>x.id===id);
+  if(!p)return;
+  p.liked=!p.liked;
+  p.likes+=p.liked?1:-1;
+  btn.classList.toggle('liked',p.liked);
+  btn.querySelector('.card-action-count').textContent=p.likes;
+}
+
+// ═══ SUGGESTED ARTISTS ════════════════════════════
+function buildSuggestedArtists(){
+  const container=document.getElementById('suggested-artists');
+  const others=Object.values(USERS).filter(u=>u.handle!==currentUser.handle).slice(0,3);
+  container.innerHTML=others.map(u=>`
+    <div class="artist-suggest">
+      <div class="suggest-avatar" style="background:${u.color}">${u.initials}</div>
+      <div class="suggest-info">
+        <div class="suggest-name">${u.name}</div>
+        <div class="suggest-role">${u.role}</div>
+      </div>
+      <button class="btn-follow" onclick="this.classList.toggle('following');this.textContent=this.classList.contains('following')?'Siguiendo':'Seguir'">Seguir</button>
+    </div>`).join('');
+}
+
+// ═══ EXPLORE ══════════════════════════════════════
+function buildExplore(){
+  const disciplines=['Ilustración','Fotografía','Escultura','Pintura','Arte digital','Cerámica','Diseño gráfico','Instalación'];
+  document.getElementById('explore-disciplines').innerHTML=
+    disciplines.map(d=>`<span class="disc-tag" onclick="filterExplore('${d}',this)">${d}</span>`).join('');
+  renderExploreGrid(posts);
+}
+
+function filterExplore(disc,el){
+  document.querySelectorAll('.disc-tag').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderExploreGrid(posts.filter(p=>p.discipline===disc));
+}
+
+function renderExploreGrid(items){
+  const g=document.getElementById('explore-grid');
+  g.innerHTML=items.map(p=>{
+    const u=USERS[p.user]||{color:'#888'};
+    return`<div class="project-card-grid" onclick="">
+      <div class="project-thumb" style="background:${p.color||'var(--paper2)'}">
+        ${p.imageUrl?`<img class="project-thumb-img" src="${p.imageUrl}" alt="">`:`<div class="project-thumb-placeholder" style="color:${u.color}">◯</div>`}
+      </div>
+      <div class="project-card-info">
+        <div class="project-card-title">${p.title}</div>
+        <div class="project-card-cat">${p.discipline} · ${USERS[p.user]?.name||p.user}</div>
+        <div class="project-card-likes"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>${p.likes}</div>
+      </div>
+    </div>`;
+  }).join('');
+  if(!items.length)g.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--ink3)">No hay proyectos en esta disciplina aún.</div>`;
+}
+
+// ═══ SECTIONS ═════════════════════════════════════
+function showSection(name){
+  ['feed','explore','profile'].forEach(s=>{
+    document.getElementById('section-'+s).style.display=s===name?'block':'none';
+  });
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const btn=document.getElementById('nav-'+name);
+  if(btn)btn.classList.add('active');
+  document.querySelectorAll('.side-nav-item').forEach((b,i)=>{
+    b.classList.toggle('active',(name==='feed'&&i===0)||(name==='profile'&&i===1));
+  });
+}
+
+// ═══ MODAL / PUBLISH ══════════════════════════════
+function openModal(){
+  document.getElementById('project-modal').classList.add('open');
+}
+function closeModal(){
+  document.getElementById('project-modal').classList.remove('open');
+  document.getElementById('proj-title').value='';
+  document.getElementById('proj-discipline').value='';
+  document.getElementById('proj-year').value='';
+  document.getElementById('proj-desc').value='';
+  document.getElementById('img-preview').style.display='none';
+  tags=[];
+  renderTags();
+}
+
+function previewImage(input){
+  if(!input.files||!input.files[0])return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=document.getElementById('img-preview');
+    img.src=e.target.result;
+    img.style.display='block';
+    document.querySelector('.img-upload-icon').style.display='none';
+    document.querySelector('.img-upload-text').style.display='none';
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function handleTagInput(e){
+  if((e.key==='Enter'||e.key===',')&&e.target.value.trim()){
+    e.preventDefault();
+    const val=e.target.value.trim().replace(/^#/,'').replace(/,/g,'');
+    if(val&&!tags.includes(val)){tags.push(val);renderTags();}
+    e.target.value='';
+  }
+  if(e.key==='Backspace'&&!e.target.value&&tags.length){
+    tags.pop();renderTags();
+  }
+}
+
+function renderTags(){
+  const c=document.getElementById('tags-container');
+  const input=document.getElementById('tag-input');
+  c.querySelectorAll('.tag-pill').forEach(x=>x.remove());
+  tags.forEach((t,i)=>{
+    const pill=document.createElement('div');
+    pill.className='tag-pill';
+    pill.innerHTML=`#${t} <button onclick="removeTag(${i})">×</button>`;
+    c.insertBefore(pill,input);
+  });
+}
+
+function removeTag(i){tags.splice(i,1);renderTags();}
+
+function publishProject(){
+  const title=document.getElementById('proj-title').value.trim();
+  const discipline=document.getElementById('proj-discipline').value;
+  const desc=document.getElementById('proj-desc').value.trim();
+  const imgSrc=document.getElementById('img-preview').src;
+  const hasImg=document.getElementById('img-preview').style.display!=='none';
+  if(!title){alert('Ingresá un título para el proyecto.');return;}
+  if(!discipline){alert('Seleccioná una disciplina.');return;}
+
+  const shapes=['circle','rect','triangle'];
+  const colors=['#d4e8e0','#f5e9c8','#e8d4e8','#d4e0f5','#f5d4d4'];
+  const newPost={
+    id:Date.now(),
+    user:currentUser.handle,
+    title,
+    desc:desc||'Sin descripción.',
+    discipline,
+    tags:[...tags],
+    likes:0,
+    liked:false,
+    comments:0,
+    time:'ahora mismo',
+    imageUrl:hasImg?imgSrc:null,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    shape:shapes[Math.floor(Math.random()*shapes.length)],
+  };
+  posts.unshift(newPost);
+  userProjects.unshift(newPost);
+  buildFeed();
+  buildExplore();
+  updateProfileStats();
+  renderProfileProjects();
+  closeModal();
+  showSection('feed');
+}
+
+function renderProfileProjects(){
+  const g=document.getElementById('profile-projects-grid');
+  if(!userProjects.length){
+    g.innerHTML=`<div style="text-align:center;padding:2.5rem;color:var(--ink3);grid-column:1/-1;border:2px dashed var(--border);border-radius:10px">
+      <div style="font-size:2rem;margin-bottom:8px;opacity:0.3">🎨</div>
+      <p style="font-size:0.875rem">Aún no publicaste proyectos.</p>
+      <button class="btn-accent" onclick="openModal()" style="margin-top:1rem;font-size:0.82rem;padding:0.45rem 1rem">Publicar primer proyecto</button>
+    </div>`;
+    return;
+  }
+  g.innerHTML=userProjects.map(p=>`
+    <div class="project-card-grid">
+      <div class="project-thumb" style="background:${p.color||'var(--paper2)'}">
+        ${p.imageUrl?`<img class="project-thumb-img" src="${p.imageUrl}" alt="">`:`<div class="project-thumb-placeholder">◯</div>`}
+      </div>
+      <div class="project-card-info">
+        <div class="project-card-title">${p.title}</div>
+        <div class="project-card-cat">${p.discipline}</div>
+        <div class="project-card-likes"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--accent);fill:var(--accent-light);stroke-width:1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>${p.likes}</div>
+      </div>
+    </div>`).join('');
+}
+</script>
+</body>
+</html>

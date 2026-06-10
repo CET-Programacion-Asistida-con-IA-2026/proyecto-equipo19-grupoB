@@ -1,0 +1,114 @@
+/* ════════════════════════════════════════
+   COMPONENTES COMPARTIDOS — forms, botones
+   me invitó una amiga
+   ════════════════════════════════════════ */
+
+/* ── Campos de formulario ── */
+.field-group { margin-bottom: 1.2rem; }
+
+.field-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink2);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.field-input:focus {
+  border-color: var(--crimson);
+  box-shadow: 0 0 0 3px rgba(155, 28, 46, 0.08);
+}
+
+.field-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%238a6068' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+/* ── Botones ── */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--crimson);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.04em;
+}
+.btn-primary:hover  { background: var(--crimson2); }
+.btn-primary:active { transform: scale(0.99); }
+
+.btn-secondary {
+  padding: 0.65rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: var(--ink2);
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: var(--paper2); }
+
+.btn-accent {
+  padding: 0.65rem 1.5rem;
+  background: var(--crimson);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-accent:hover { background: var(--crimson2); }
+
+.btn-edit {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--ink2);
+  font-family: 'Jost', sans-serif;
+  transition: background 0.15s;
+}
+.btn-edit:hover { background: var(--paper2); }
+
+.btn-follow {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--crimson);
+  border-radius: 20px;
+  background: none;
+  color: var(--crimson);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  font-family: 'Jost', sans-serif;
+}
+.btn-follow:hover,
+.btn-follow.following { background: var(--crimson); color: #fff; }

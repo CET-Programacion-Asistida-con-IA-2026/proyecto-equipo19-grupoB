@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>me invitó una amiga</title>
+
+  <!-- ═══ ESTILOS ═══════════════════════════════════════════ -->
+  <!-- 1. Variables y reset global -->
+  <link rel="stylesheet" href="css/variables.css">
+  <!-- 2. Componentes compartidos (forms, botones) -->
+  <link rel="stylesheet" href="css/components.css">
+  <!-- 3. Landing / Auth -->
+  <link rel="stylesheet" href="css/landing.css">
+  <!-- 4. Layout de la app (topbar, sidebars, grid) -->
+  <link rel="stylesheet" href="css/layout.css">
+  <!-- 5. Feed de publicaciones -->
+  <link rel="stylesheet" href="css/feed.css">
+  <!-- 6. Perfil y explorar -->
+  <link rel="stylesheet" href="css/profile.css">
+  <!-- 7. Modal de publicación -->
+  <link rel="stylesheet" href="css/modal.css">
+  <!-- 8. Responsive / breakpoints -->
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LANDING / AUTH
+     ═══════════════════════════════════════════════════════════ -->
+<div id="landing">
+
+  <!-- Panel izquierdo: marca -->
+  <div class="landing-left">
+    <div class="lc-arc"></div>
+    <div class="brand-name">me invitó<span> una amiga</span></div>
+    <p class="brand-tagline">La red profesional para artistas. Conectá tu trabajo con el mundo.</p>
+    <div class="landing-art-grid">
+      <div class="art-thumb"><div class="thumb-arc"></div><span class="art-thumb-label">Escultura</span></div>
+      <div class="art-thumb"><div class="thumb-arc2"></div><span class="art-thumb-label">Diseño</span></div>
+      <div class="art-thumb"><div class="thumb-line"></div><span class="art-thumb-label">Ilustración</span></div>
+      <div class="art-thumb"><div class="thumb-dot"></div><span class="art-thumb-label">Fotografía</span></div>
+    </div>
+  </div>
+
+  <!-- Panel derecho: formulario -->
+  <div class="landing-right">
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchTab('login')">Iniciar sesión</button>
+      <button class="auth-tab"        onclick="switchTab('register')">Crear cuenta</button>
+    </div>
+
+    <!-- Login -->
+    <div id="login-form">
+      <h2 class="auth-title">Bienvenida de vuelta</h2>
+      <p class="auth-sub">Ingresá con tu usuario para continuar</p>
+
+      <div class="field-group">
+        <label class="field-label">Usuario</label>
+        <input class="field-input" type="text" id="login-user" placeholder="@tuusuario">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Contraseña</label>
+        <input class="field-input" type="password" id="login-pass" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" onclick="login()">Entrar</button>
+
+      <div class="auth-divider">o probá con una cuenta demo</div>
+      <div class="demo-users">
+        <button class="demo-user-btn" onclick="loginDemo('sofiamorales')">
+          <div class="demo-avatar" style="background:#9b1c2e">SM</div>
+          <div class="demo-info">
+            <div class="demo-name">@sofiamorales</div>
+            <div class="demo-role">Ilustradora · Buenos Aires</div>
+          </div>
+        </button>
+        <button class="demo-user-btn" onclick="loginDemo('pablorojas')">
+          <div class="demo-avatar" style="background:#6b1420">PR</div>
+          <div class="demo-info">
+            <div class="demo-name">@pablorojas</div>
+            <div class="demo-role">Fotógrafo · Córdoba</div>
+          </div>
+        </button>
+        <button class="demo-user-btn" onclick="loginDemo('marinacast')">
+          <div class="demo-avatar" style="background:#4a0c17">MC</div>
+          <div class="demo-info">
+            <div class="demo-name">@marinacast</div>
+            <div class="demo-role">Escultora · Rosario</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Registro -->
+    <div id="register-form" style="display:none">
+      <h2 class="auth-title">Creá tu perfil</h2>
+      <p class="auth-sub">Unite a la comunidad de artistas</p>
+
+      <div class="field-group">
+        <label class="field-label">Nombre completo</label>
+        <input class="field-input" type="text" id="reg-name" placeholder="Tu nombre">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Usuario</label>
+        <input class="field-input" type="text" id="reg-user" placeholder="@tuusuario">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Disciplina artística</label>
+        <select class="field-input field-select" id="reg-discipline">
+          <option value="">Seleccioná tu disciplina</option>
+          <option>Ilustración</option>
+          <option>Fotografía</option>
+          <option>Escultura</option>
+          <option>Pintura</option>
+          <option>Diseño gráfico</option>
+          <option>Arte digital</option>
+          <option>Cerámica</option>
+          <option>Instalación</option>
+          <option>Performance</option>
+          <option>Otra</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Contraseña</label>
+        <input class="field-input" type="password" id="reg-pass" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" onclick="register()">Crear mi cuenta</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     APP
+     ═══════════════════════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- ── Topbar ── -->
+  <div class="topbar">
+    <div class="topbar-brand">me invitó<span> una amiga</span></div>
+
+    <!-- <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>-->
+    <div class="topbar-search">
+     
+      <input type="text" placeholder="Buscar artistas, proyectos, disciplinas...">
+    </div>
+
+    <div class="topbar-nav">
+      <button class="nav-btn active" onclick="showSection('feed')" id="nav-feed">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Inicio
+      </button>
+      <button class="nav-btn" onclick="showSection('explore')" id="nav-explore">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Explorar
+      </button>
+      <button class="nav-btn" onclick="showSection('profile')" id="nav-profile">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Mi perfil
+      </button>
+    </div>
+
+    <div class="topbar-avatar" id="topbar-avatar" onclick="showSection('profile')"></div>
+  </div>
+
+  <!-- ── Body: 3 columnas ── -->
+  <div class="app-body">
+
+    <!-- Sidebar izquierdo -->
+    <div class="sidebar-left">
+      <div class="profile-card" id="sidebar-profile-card"></div>
+
+      <div class="side-nav">
+        <div class="side-nav-item active" onclick="showSection('feed')">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Feed
+        </div>
+        <div class="side-nav-item" onclick="showSection('profile')">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Mis proyectos
+        </div>
+        <div class="side-nav-item">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Red
+          <span class="badge">3</span>
+        </div>
+        <div class="side-nav-item">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          Estadísticas
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-feed">
+
+      <!-- ── Sección: Feed ── -->
+      <div id="section-feed">
+        <div class="publish-box">
+          <div class="publish-row">
+            <div class="publish-avatar" id="publish-avatar"></div>
+            <button class="publish-trigger" onclick="openModal()">¿Qué proyecto querés compartir hoy?</button>
+          </div>
+          <div class="publish-actions">
+            <button class="pub-action" onclick="openModal()">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Imagen
+            </button>
+            <button class="pub-action" onclick="openModal()">
+              <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              Video
+            </button>
+            <button class="pub-action" onclick="openModal()">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Proyecto
+            </button>
+          </div>
+        </div>
+        <div id="feed-posts"></div>
+      </div>
+
+      <!-- ── Sección: Explorar ── -->
+      <div id="section-explore" style="display:none">
+        <div style="background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem">
+          <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.75rem">
+            Explorar por disciplina
+          </h2>
+          <div class="discipline-list" id="explore-disciplines"></div>
+        </div>
+        <div id="explore-grid" class="projects-grid"></div>
+      </div>
+
+      <!-- ── Sección: Perfil ── -->
+      <div id="section-profile" style="display:none">
+        <div class="profile-hero">
+          <div class="profile-cover">
+            <button class="profile-cover-edit" onclick="alert('Editor de portada próximamente')">Editar portada</button>
+          </div>
+          <div class="profile-info-row">
+            <div class="profile-big-avatar" id="profile-big-avatar"></div>
+            <div class="profile-details">
+              <div class="profile-name"         id="profile-name-text"></div>
+              <div class="profile-role-line"     id="profile-role-text"></div>
+              <div class="profile-location">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span id="profile-location-text">Argentina</span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-cta">
+            <button class="btn-edit" onclick="alert('Editar perfil — próximamente')">
+              <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Editar perfil
+            </button>
+            <button class="btn-accent" onclick="openModal()">+ Nuevo proyecto</button>
+          </div>
+          <div class="profile-stats-row">
+            <div class="pstat"><span class="pstat-num" id="stat-projects">0</span><span class="pstat-label">Proyectos</span></div>
+            <div class="pstat"><span class="pstat-num">127</span><span class="pstat-label">Seguidores</span></div>
+            <div class="pstat"><span class="pstat-num">84</span><span class="pstat-label">Siguiendo</span></div>
+            <div class="pstat"><span class="pstat-num" id="stat-likes">0</span><span class="pstat-label">Me gusta recibidos</span></div>
+          </div>
+          <div class="profile-bio-section">
+            <div class="section-label">Bio</div>
+            <p class="profile-bio-text" id="profile-bio-text"></p>
+          </div>
+        </div>
+
+        <div style="background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.25rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600">Proyectos publicados</h3>
+            <button class="btn-accent" onclick="openModal()" style="font-size:0.8rem;padding:0.4rem 1rem">+ Agregar</button>
+          </div>
+          <div class="projects-grid" id="profile-projects-grid"></div>
+        </div>
+      </div>
+
+    </div><!-- /main-feed -->
+
+    <!-- Sidebar derecho -->
+    <div class="sidebar-right">
+      <div class="widget">
+        <div class="widget-title">Artistas sugeridos</div>
+        <div id="suggested-artists"></div>
+        <a href="#" style="font-size:0.8rem;color:var(--crimson);text-decoration:none"
+           onclick="showSection('explore');return false">Ver más →</a>
+      </div>
+      <div class="widget">
+        <div class="widget-title">Disciplinas activas</div>
+        <div class="discipline-list">
+          <span class="disc-tag active">Ilustración</span>
+          <span class="disc-tag">Fotografía</span>
+          <span class="disc-tag">Escultura</span>
+          <span class="disc-tag">Pintura</span>
+          <span class="disc-tag">Arte digital</span>
+          <span class="disc-tag">Cerámica</span>
+        </div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">Convocatorias</div>
+        <div style="font-size:0.82rem;color:var(--ink2);line-height:1.7">
+          <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <div style="font-weight:500;color:var(--ink)">Bienal de Arte Joven 2026</div>
+            <div style="color:var(--ink3);font-size:0.75rem">Cierre: 30 jul · CCEBA</div>
+          </div>
+          <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+            <div style="font-weight:500;color:var(--ink)">Premio Klemm</div>
+            <div style="color:var(--ink3);font-size:0.75rem">Cierre: 15 ago · Fundación Klemm</div>
+          </div>
+          <div>
+            <div style="font-weight:500;color:var(--ink)">Residencia en Berlín</div>
+            <div style="color:var(--ink3);font-size:0.75rem">Cierre: 1 sep · Goethe Institut</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /sidebar-right -->
+
+  </div><!-- /app-body -->
+</div><!-- /app -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODAL — Publicar proyecto
+     ═══════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Publicar proyecto</div>
+      <button class="modal-close" onclick="closeModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label class="field-label">Título del proyecto</label>
+        <input class="field-input" type="text" id="proj-title" placeholder="Ej: Serie fotográfica «Raíces»">
+      </div>
+      <div class="form-row">
+        <div class="field-group">
+          <label class="field-label">Disciplina</label>
+          <select class="field-input field-select" id="proj-discipline">
+            <option value="">Seleccioná</option>
+            <option>Ilustración</option>
+            <option>Fotografía</option>
+            <option>Escultura</option>
+            <option>Pintura</option>
+            <option>Diseño gráfico</option>
+            <option>Arte digital</option>
+            <option>Cerámica</option>
+            <option>Instalación</option>
+            <option>Performance</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Año</label>
+          <input class="field-input" type="number" id="proj-year" placeholder="2026" min="1900" max="2099">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Descripción</label>
+        <textarea class="field-input" id="proj-desc" rows="3"
+          placeholder="Contá de qué trata tu proyecto, qué técnica usaste, qué querías explorar..."></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Imagen del proyecto</label>
+        <div class="img-upload" id="img-upload-area">
+          <input type="file" accept="image/*" onchange="previewImage(this)">
+          <div class="img-upload-icon">🖼</div>
+          <div class="img-upload-text">
+            Arrastrá o hacé click para subir una imagen<br>
+            <span style="font-size:0.72rem;color:var(--ink3)">JPG, PNG, WEBP · hasta 10MB</span>
+          </div>
+          <img class="img-preview" id="img-preview">
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Etiquetas</label>
+        <div class="tags-input" id="tags-container"
+             onclick="document.getElementById('tag-input').focus()">
+          <input class="tags-input-field" id="tag-input"
+                 placeholder="Escribí y presioná Enter"
+                 onkeydown="handleTagInput(event)">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+      <button class="btn-accent"    onclick="publishProject()">Publicar proyecto</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS (orden: datos → lógica → init)
+     ═══════════════════════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/feed.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/explore.js"></script>
+<script src="js/modal.js"></script>
+
+</body>
+</html>

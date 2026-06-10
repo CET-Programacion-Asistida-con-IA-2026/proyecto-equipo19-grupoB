@@ -1,0 +1,55 @@
+/* ════════════════════════════════════════
+   VARIABLES & RESET — me invitó una amiga
+   ════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* — Carmesí (principal) */
+  --crimson:       #9b1c2e;
+  --crimson2:      #b52238;
+  --crimson3:      #7a1524;
+  --crimson-deep:  #4a0c17;
+  --crimson-light: #f5dde1;
+  --crimson-pale:  #fdf0f2;
+
+  /* — Dorado (acento) */
+  --gold:       #c9a84c;
+  --gold2:      #e8c86a;
+  --gold-light: #faf3e0;
+
+  /* — Tintas */
+  --ink:  #1a0a0d;
+  --ink2: #3d1e25;
+  --ink3: #8a6068;
+
+  /* — Fondos "paper" */
+  --paper:  #fefcfc;
+  --paper2: #faf5f6;
+  --paper3: #f3eaec;
+
+  /* — Bordes */
+  --border:  #e8d4d8;
+  --border2: #d4b8be;
+
+  /* — Radios */
+  --radius:    16px;
+  --radius-sm: 10px;
+
+  /* — Layout */
+  --sidebar: 260px;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--paper3);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 15px;
+}

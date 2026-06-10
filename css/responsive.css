@@ -1,0 +1,19 @@
+/* ════════════════════════════════════════
+   RESPONSIVE — breakpoints
+   me invitó una amiga
+   ════════════════════════════════════════ */
+
+/* Tablet: ocultar sidebar derecho, apilar landing */
+@media (max-width: 900px) {
+  .sidebar-right { display: none; }
+
+  #landing { flex-direction: column; }
+  .landing-left  { min-height: 220px; padding: 2rem; }
+  .landing-right { width: 100%; padding: 2rem; }
+}
+
+/* Mobile: ocultar sidebar izquierdo, reducir padding */
+@media (max-width: 640px) {
+  .sidebar-left { display: none; }
+  .app-body { padding: 1rem; }
+}

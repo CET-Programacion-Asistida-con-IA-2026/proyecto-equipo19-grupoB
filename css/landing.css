@@ -1,0 +1,241 @@
+/* ════════════════════════════════════════
+   LANDING / AUTH — me invitó una amiga
+   ════════════════════════════════════════ */
+
+/* ── Contenedor principal ── */
+#landing {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+/* ── Panel izquierdo (marca) ── */
+.landing-left {
+  flex: 1;
+  background: var(--crimson-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Arco decorativo superior */
+.landing-left::before {
+  content: '';
+  position: absolute;
+  top: -180px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  border: 1.5px solid rgba(201, 168, 76, 0.18);
+  border-radius: 50%;
+}
+
+/* Arco decorativo inferior */
+.landing-left::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: -100px;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+}
+
+/* Tercer arco central */
+.lc-arc {
+  position: absolute;
+  top: 40%;
+  left: -160px;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ── Tipografía de marca ── */
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.brand-name span {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.brand-tagline {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+/* ── Grid decorativo de thumbnails ── */
+.landing-art-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 2.5rem;
+  max-width: 320px;
+}
+
+.art-thumb {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.art-thumb:nth-child(1) { background: #6a1020; aspect-ratio: auto; height: 90px; border-radius: 40px 20px 20px 20px; }
+.art-thumb:nth-child(2) { background: #3d0a14; border-radius: 20px 40px 20px 20px; }
+.art-thumb:nth-child(3) { background: #7a1830; border-radius: 20px 20px 40px 20px; }
+.art-thumb:nth-child(4) { background: #4a0f1e; aspect-ratio: auto; height: 90px; border-radius: 20px 20px 20px 40px; }
+
+.art-thumb-label {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Elementos geométricos decorativos dentro de thumbs */
+.thumb-arc  { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; margin: 18px auto; }
+.thumb-arc2 { width: 30px; height: 30px; border: 1px solid rgba(201,168,76,0.2);  border-radius: 50%; margin: 10px auto; }
+.thumb-line { width: 50px; height: 1px; background: rgba(255,255,255,0.12); margin: 20px auto; border-radius: 1px; }
+.thumb-dot  { width: 10px; height: 10px; border-radius: 50%; background: rgba(201,168,76,0.25); margin: 25px auto; }
+
+/* ── Panel derecho (formulario) ── */
+.landing-right {
+  width: 460px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Curva decorativa en la esquina */
+.landing-right::before {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(155, 28, 46, 0.07);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ── Tabs login / registro ── */
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.auth-tab {
+  background: none;
+  border: none;
+  padding: 0.75rem 0;
+  margin-right: 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink3);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+.auth-tab.active { color: var(--crimson); font-weight: 500; }
+.auth-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--crimson);
+}
+
+.auth-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.auth-sub {
+  font-size: 0.85rem;
+  color: var(--ink3);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* ── Divisor y cuentas demo ── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: var(--ink3);
+  font-size: 0.8rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.demo-users { display: flex; flex-direction: column; gap: 8px; }
+
+.demo-user-btn {
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.2s, background 0.2s;
+  text-align: left;
+}
+.demo-user-btn:hover {
+  border-color: var(--crimson);
+  background: var(--crimson-pale);
+}
+
+.demo-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  flex-shrink: 0;
+}
+.demo-info  { flex: 1; }
+.demo-name  { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+.demo-role  { font-size: 0.75rem; color: var(--ink3); }
