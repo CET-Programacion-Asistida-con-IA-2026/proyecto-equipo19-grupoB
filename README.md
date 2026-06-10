@@ -105,7 +105,7 @@ Luego abrir la URL que aparece en consola (generalmente `http://localhost:3000`)
 
 | Nombre | GitHub |
 |---|---|
-| Hannah Chodos Breier | (agregar) |
+| Hannah Chodos Breier | hannnahhon |
 | Brisa Escobar | BrisaAnahiEscobar |
 | Nicole González | nicolee6 |
 | Maurehen Torres | Maurehen29-05 |
