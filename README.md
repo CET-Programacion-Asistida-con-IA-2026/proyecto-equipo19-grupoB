@@ -25,7 +25,7 @@ Nuestro proyecto se relaciona directamente con:
 
 ## Implementación de la problemática
 
-La solución fue implementar una red profesional estilo LinkedIn pero exclusiva para artistas, donde puedan conectar con pares, mostrar su portafolio y postularse a convocatorias abiertas. La plataforma se llama **"me invitó una amiga"** y ofrece:
+La solución fue implementar una red profesional estilo LinkedIn pero exclusiva para artistas, donde puedan conectar con pares, mostrar su portafolio y postularse a convocatorias abiertas. La plataforma se llama **"Luz, camára, ¡ACCIÓN! 🎬"** y ofrece:
 
 - **Landing page con autenticación** simulada (login, registro y usuarios demo)
 - **Feed de publicaciones** donde los artistas comparten proyectos con imagen, disciplina y etiquetas
@@ -62,7 +62,7 @@ El sistema de diseño está inspirado en revistas de arte independiente y galer�
 
 El repositorio mantiene una arquitectura modular separada por responsabilidades:
 ```
-me-invito-una-amiga/
+luz-camara-accion/
 ├── index.html            ← Solo HTML + orquestación (carga módulos)
 ├── css/
 │   ├── variables.css     ← :root tokens, reset global
@@ -105,7 +105,7 @@ Luego abrir la URL que aparece en consola (generalmente `http://localhost:3000`)
 
 | Nombre | GitHub |
 |---|---|
-| Hannah Chodos Breier | (agregar) |
+| Hannah Chodos Breier | hannnahhon|
 | Brisa Escobar | BrisaAnahiEscobar |
 | Nicole González | nicolee6 |
 | Maurehen Torres | Maurehen29-05 |
