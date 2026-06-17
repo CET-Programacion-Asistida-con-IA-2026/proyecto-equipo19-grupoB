@@ -13,6 +13,18 @@ El mundo del arte carece de un espacio digital profesional pensado específicame
 
 ---
 
+## 📋 One Page Plan
+
+| | |
+|---|---|
+| **PROBLEMA** | La falta de conectividad entre artistas con ganas de crear o con escasez de recursos. El problema surge en facultades de arte y también en profesionales ya graduados sin conexiones o contactos directos en el medio audiovisual y artístico. |
+
+| **PÚBLICO OBJETIVO** | **SOLUCIÓN** | **FUNCIONALIDADES CLAVE** |
+|---|---|---|
+| Estudiantes de carreras artísticas, artistas independientes y trabajadores del medio audiovisual (actores, equipo de producción, servicios). Cualquier persona que quiera conectar con otros del mismo rubro para crear proyectos colaborativos. | Reunir en una sola plataforma a personas del mismo rubro para colaborar en proyectos audiovisuales y artísticos con gente especializada en el medio, facilitando el contacto directo y la visibilidad del trabajo de cada una. | • Sistema de reseñas y puntaje · • Mensajes directos entre usuarios · • Publicación de proyectos y portafolio con filtros por disciplina |
+
+---
+
 ## Objetivos de Desarrollo Sostenible (ODS) 🎯
 
 Nuestro proyecto se relaciona directamente con:
