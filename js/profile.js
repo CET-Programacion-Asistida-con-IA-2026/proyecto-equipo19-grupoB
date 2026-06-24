@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
-   PERFIL — sidebar y página de perfil
-   me invitó una amiga
+   PERFIL 
    ════════════════════════════════════════ */
 
 function buildSidebar() {

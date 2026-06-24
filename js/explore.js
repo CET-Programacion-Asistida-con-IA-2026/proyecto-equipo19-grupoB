@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════
    EXPLORAR — grid y filtros por disciplina
-   me invitó una amiga
+  
    ════════════════════════════════════════ */
 
 const DISCIPLINES = [

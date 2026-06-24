@@ -5,35 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luz-Camara-Accion</title>
 
-  <!-- ═══ ESTILOS ═══════════════════════════════════════════ -->
-  <!-- 1. Variables y reset global -->
+  <!-- ═══ ESTILOS ═══════════════════════════════ -->
   <link rel="stylesheet" href="css/variables.css">
-  <!-- 2. Componentes compartidos (forms, botones) -->
   <link rel="stylesheet" href="css/components.css">
-  <!-- 3. Landing / Auth -->
   <link rel="stylesheet" href="css/landing.css">
-  <!-- 4. Layout de la app (topbar, sidebars, grid) -->
   <link rel="stylesheet" href="css/layout.css">
-  <!-- 5. Feed de publicaciones -->
   <link rel="stylesheet" href="css/feed.css">
-  <!-- 6. Perfil y explorar -->
   <link rel="stylesheet" href="css/profile.css">
-  <!-- 7. Modal de publicación -->
   <link rel="stylesheet" href="css/modal.css">
-  <!-- 8. Responsive / breakpoints -->
+  <link rel="stylesheet" href="css/ui-extras.css">
   <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+  .profile-info-row {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    padding: 0 1.5rem !important;
+    margin-top: -28px !important;
+  }
+  .profile-details {
+    flex: 1 !important;
+    padding-top: 55px !important;
+    padding-bottom: 0.5rem !important;
+  }
+</style>
+
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      LANDING / AUTH
-     ═══════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════════════ -->
 <div id="landing">
 
-  <!-- Panel izquierdo: marca -->
   <div class="landing-left">
     <div class="lc-arc"></div>
-    <div class="brand-name">Luz, cámara<span> ¡ACCIÓN! </span></div>
+    <div class="brand-name">Luz, cámara<span> ¡ACCIÓN!</span></div>
     <p class="brand-tagline">La red profesional para artistas. Conectá tu trabajo con el mundo.</p>
     <div class="landing-art-grid">
       <div class="art-thumb"><div class="thumb-arc"></div><span class="art-thumb-label">Escultura</span></div>
@@ -43,7 +51,6 @@
     </div>
   </div>
 
-  <!-- Panel derecho: formulario -->
   <div class="landing-right">
     <div class="auth-tabs">
       <button class="auth-tab active" onclick="switchTab('login')">Iniciar sesión</button>
@@ -54,39 +61,30 @@
     <div id="login-form">
       <h2 class="auth-title">Bienvenida de vuelta</h2>
       <p class="auth-sub">Ingresá con tu usuario para continuar</p>
-
       <div class="field-group">
         <label class="field-label">Usuario</label>
-        <input class="field-input" type="text" id="login-user" placeholder="@tuusuario">
+        <input class="field-input" type="text" id="login-user" placeholder="@tuusuario"
+               onkeydown="if(event.key==='Enter')login()">
       </div>
       <div class="field-group">
         <label class="field-label">Contraseña</label>
-        <input class="field-input" type="password" id="login-pass" placeholder="••••••••">
+        <input class="field-input" type="password" id="login-pass" placeholder="••••••••"
+               onkeydown="if(event.key==='Enter')login()">
       </div>
       <button class="btn-primary" onclick="login()">Entrar</button>
-
       <div class="auth-divider">o probá con una cuenta demo</div>
       <div class="demo-users">
         <button class="demo-user-btn" onclick="loginDemo('sofiamorales')">
-          <div class="demo-avatar" style="background:#9b1c2e">SM</div>
-          <div class="demo-info">
-            <div class="demo-name">@sofiamorales</div>
-            <div class="demo-role">Ilustradora · Buenos Aires</div>
-          </div>
+          <div class="demo-avatar" style="background:#2d4a3e">SM</div>
+          <div class="demo-info"><div class="demo-name">@sofiamorales</div><div class="demo-role">Ilustradora · Buenos Aires</div></div>
         </button>
         <button class="demo-user-btn" onclick="loginDemo('pablorojas')">
-          <div class="demo-avatar" style="background:#6b1420">PR</div>
-          <div class="demo-info">
-            <div class="demo-name">@pablorojas</div>
-            <div class="demo-role">Fotógrafo · Córdoba</div>
-          </div>
+          <div class="demo-avatar" style="background:#4a3d2d">PR</div>
+          <div class="demo-info"><div class="demo-name">@pablorojas</div><div class="demo-role">Fotógrafo · Córdoba</div></div>
         </button>
         <button class="demo-user-btn" onclick="loginDemo('marinacast')">
-          <div class="demo-avatar" style="background:#4a0c17">MC</div>
-          <div class="demo-info">
-            <div class="demo-name">@marinacast</div>
-            <div class="demo-role">Escultora · Rosario</div>
-          </div>
+          <div class="demo-avatar" style="background:#3d2d4a">MC</div>
+          <div class="demo-info"><div class="demo-name">@marinacast</div><div class="demo-role">Escultora · Rosario</div></div>
         </button>
       </div>
     </div>
@@ -95,7 +93,6 @@
     <div id="register-form" style="display:none">
       <h2 class="auth-title">Creá tu perfil</h2>
       <p class="auth-sub">Unite a la comunidad de artistas</p>
-
       <div class="field-group">
         <label class="field-label">Nombre completo</label>
         <input class="field-input" type="text" id="reg-name" placeholder="Tu nombre">
@@ -108,15 +105,9 @@
         <label class="field-label">Disciplina artística</label>
         <select class="field-input field-select" id="reg-discipline">
           <option value="">Seleccioná tu disciplina</option>
-          <option>Ilustración</option>
-          <option>Fotografía</option>
-          <option>Escultura</option>
-          <option>Pintura</option>
-          <option>Diseño gráfico</option>
-          <option>Arte digital</option>
-          <option>Cerámica</option>
-          <option>Instalación</option>
-          <option>Performance</option>
+          <option>Ilustración</option><option>Fotografía</option><option>Escultura</option>
+          <option>Pintura</option><option>Diseño gráfico</option><option>Arte digital</option>
+          <option>Cerámica</option><option>Instalación</option><option>Performance</option>
           <option>Otra</option>
         </select>
       </div>
@@ -130,21 +121,22 @@
 </div>
 
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      APP
-     ═══════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════════════ -->
 <div id="app">
 
   <!-- ── Topbar ── -->
   <div class="topbar">
-    <div class="topbar-brand">Luz,cámara<span> ¡ACCIÓN! </span></div>
+    <div class="topbar-brand">Luz, cámara<span> ¡ACCIÓN!</span></div>
 
-    <!-- <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>-->
     <div class="topbar-search">
-     
-      <input type="text" placeholder="Buscar artistas, proyectos, disciplinas...">
+      <!--<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+    -->
+      <input type="text" placeholder="Buscar artistas, proyectos, disciplinas…">
+      <div class="search-dropdown" id="search-dropdown"></div>
     </div>
 
     <div class="topbar-nav">
@@ -156,22 +148,45 @@
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         Explorar
       </button>
+      <button class="nav-btn" onclick="showSection('calls')" id="nav-calls">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Convocatorias
+      </button>
       <button class="nav-btn" onclick="showSection('profile')" id="nav-profile">
         <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         Mi perfil
       </button>
     </div>
 
+    <!-- Dark mode toggle -->
+    <button class="topbar-icon-btn" id="darkmode-btn" onclick="toggleDarkMode()" title="Modo oscuro">
+      <svg id="darkmode-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <!-- Notificaciones -->
+    <div style="position:relative">
+      <button class="topbar-icon-btn" id="notif-btn" onclick="toggleNotifPanel()" title="Notificaciones">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-badge" id="notif-badge" style="display:none">0</span>
+      </button>
+      <div class="notif-panel" id="notif-panel">
+        <div class="notif-panel-header">
+          <span>Notificaciones</span>
+          <button onclick="notifications=[];updateNotifBadge();renderNotifPanel()" style="background:none;border:none;font-size:0.75rem;color:var(--ink3);cursor:pointer">Limpiar</button>
+        </div>
+        <div id="notif-list"></div>
+      </div>
+    </div>
+
     <div class="topbar-avatar" id="topbar-avatar" onclick="showSection('profile')"></div>
   </div>
 
-  <!-- ── Body: 3 columnas ── -->
+  <!-- ── Body ── -->
   <div class="app-body">
 
     <!-- Sidebar izquierdo -->
     <div class="sidebar-left">
       <div class="profile-card" id="sidebar-profile-card"></div>
-
       <div class="side-nav">
         <div class="side-nav-item active" onclick="showSection('feed')">
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -181,14 +196,18 @@
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           Mis proyectos
         </div>
-        <div class="side-nav-item">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Red
-          <span class="badge">3</span>
+        <div class="side-nav-item" onclick="showSection('calls')">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Convocatorias
+          <span class="badge">4</span>
         </div>
-        <div class="side-nav-item">
+        <div class="side-nav-item" onclick="showSection('explore')">
           <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-          Estadísticas
+          Explorar
+        </div>
+        <div class="side-nav-item" onclick="logout()" style="margin-top:auto;color:var(--ink3)">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Cerrar sesión
         </div>
       </div>
     </div>
@@ -196,7 +215,7 @@
     <!-- Contenido principal -->
     <div class="main-feed">
 
-      <!-- ── Sección: Feed ── -->
+      <!-- ── Feed ── -->
       <div id="section-feed">
         <div class="publish-box">
           <div class="publish-row">
@@ -221,36 +240,53 @@
         <div id="feed-posts"></div>
       </div>
 
-      <!-- ── Sección: Explorar ── -->
+      <!-- ── Explorar ── -->
       <div id="section-explore" style="display:none">
-        <div style="background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem">
-          <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.75rem">
-            Explorar por disciplina
-          </h2>
+        <div class="section-header-card">
+          <h2 class="section-heading">Explorar proyectos</h2>
           <div class="discipline-list" id="explore-disciplines"></div>
         </div>
         <div id="explore-grid" class="projects-grid"></div>
       </div>
 
-      <!-- ── Sección: Perfil ── -->
+      <!-- ── Convocatorias ── -->
+      <div id="section-calls" style="display:none">
+        <div class="section-header-card">
+          <h2 class="section-heading">Convocatorias abiertas</h2>
+          <p style="font-size:0.875rem;color:var(--ink3);margin-bottom:0.75rem">Oportunidades para artistas de todo el país</p>
+          <div class="discipline-list calls-filters">
+            <span class="calls-filter-tag disc-tag active" onclick="filterCalls('Todas')">Todas</span>
+            <span class="calls-filter-tag disc-tag" onclick="filterCalls('Ilustración')">Ilustración</span>
+            <span class="calls-filter-tag disc-tag" onclick="filterCalls('Fotografía')">Fotografía</span>
+            <span class="calls-filter-tag disc-tag" onclick="filterCalls('Pintura')">Pintura</span>
+            <span class="calls-filter-tag disc-tag" onclick="filterCalls('Escultura')">Escultura</span>
+          </div>
+        </div>
+        <div id="calls-list"></div>
+      </div>
+
+      <!-- ── Perfil ── -->
       <div id="section-profile" style="display:none">
         <div class="profile-hero">
           <div class="profile-cover">
-            <button class="profile-cover-edit" onclick="alert('Editor de portada próximamente')">Editar portada</button>
+            <button class="profile-cover-edit" onclick="showToast('Editor de portada — próximamente.','info')">Editar portada</button>
           </div>
           <div class="profile-info-row">
             <div class="profile-big-avatar" id="profile-big-avatar"></div>
             <div class="profile-details">
-              <div class="profile-name"         id="profile-name-text"></div>
-              <div class="profile-role-line"     id="profile-role-text"></div>
+              <div class="profile-name"      id="profile-name-text"></div>
+              <div class="profile-role-line" id="profile-role-text"></div>
               <div class="profile-location">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span id="profile-location-text">Argentina</span>
+                <span id="profile-location-text"></span>
               </div>
+              <a class="profile-website" id="profile-website" href="#" onclick="return false" style="display:none">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </a>
             </div>
           </div>
           <div class="profile-cta">
-            <button class="btn-edit" onclick="alert('Editar perfil — próximamente')">
+            <button class="btn-edit" onclick="openEditProfile()">
               <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -261,8 +297,8 @@
           </div>
           <div class="profile-stats-row">
             <div class="pstat"><span class="pstat-num" id="stat-projects">0</span><span class="pstat-label">Proyectos</span></div>
-            <div class="pstat"><span class="pstat-num">127</span><span class="pstat-label">Seguidores</span></div>
-            <div class="pstat"><span class="pstat-num">84</span><span class="pstat-label">Siguiendo</span></div>
+            <div class="pstat"><span class="pstat-num" id="stat-followers">0</span><span class="pstat-label">Seguidores</span></div>
+            <div class="pstat"><span class="pstat-num" id="stat-following">0</span><span class="pstat-label">Siguiendo</span></div>
             <div class="pstat"><span class="pstat-num" id="stat-likes">0</span><span class="pstat-label">Me gusta recibidos</span></div>
           </div>
           <div class="profile-bio-section">
@@ -271,7 +307,7 @@
           </div>
         </div>
 
-        <div style="background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.25rem">
+        <div class="section-header-card">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
             <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600">Proyectos publicados</h3>
             <button class="btn-accent" onclick="openModal()" style="font-size:0.8rem;padding:0.4rem 1rem">+ Agregar</button>
@@ -293,16 +329,16 @@
       <div class="widget">
         <div class="widget-title">Disciplinas activas</div>
         <div class="discipline-list">
-          <span class="disc-tag active">Ilustración</span>
-          <span class="disc-tag">Fotografía</span>
-          <span class="disc-tag">Escultura</span>
-          <span class="disc-tag">Pintura</span>
-          <span class="disc-tag">Arte digital</span>
-          <span class="disc-tag">Cerámica</span>
+          <span class="disc-tag" onclick="showSection('explore');filterExplore('Ilustración',this)">Ilustración</span>
+          <span class="disc-tag" onclick="showSection('explore');filterExplore('Fotografía',this)">Fotografía</span>
+          <span class="disc-tag" onclick="showSection('explore');filterExplore('Escultura',this)">Escultura</span>
+          <span class="disc-tag" onclick="showSection('explore');filterExplore('Pintura',this)">Pintura</span>
+          <span class="disc-tag" onclick="showSection('explore');filterExplore('Arte digital',this)">Arte digital</span>
+          <span class="disc-tag" onclick="showSection('explore');filterExplore('Cerámica',this)">Cerámica</span>
         </div>
       </div>
       <div class="widget">
-        <div class="widget-title">Convocatorias</div>
+        <div class="widget-title">Convocatorias destacadas</div>
         <div style="font-size:0.82rem;color:var(--ink2);line-height:1.7">
           <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">
             <div style="font-weight:500;color:var(--ink)">Bienal de Arte Joven 2026</div>
@@ -316,17 +352,21 @@
             <div style="font-weight:500;color:var(--ink)">Residencia en Berlín</div>
             <div style="color:var(--ink3);font-size:0.75rem">Cierre: 1 sep · Goethe Institut</div>
           </div>
+          <a href="#" onclick="showSection('calls');return false"
+             style="display:block;margin-top:0.75rem;font-size:0.8rem;color:var(--crimson);text-decoration:none">
+            Ver todas →
+          </a>
         </div>
       </div>
-    </div><!-- /sidebar-right -->
+    </div>
 
   </div><!-- /app-body -->
 </div><!-- /app -->
 
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      MODAL — Publicar proyecto
-     ═══════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════════════ -->
 <div class="modal-overlay" id="project-modal">
   <div class="modal">
     <div class="modal-header">
@@ -337,23 +377,17 @@
     </div>
     <div class="modal-body">
       <div class="field-group">
-        <label class="field-label">Título del proyecto</label>
+        <label class="field-label">Título del proyecto *</label>
         <input class="field-input" type="text" id="proj-title" placeholder="Ej: Serie fotográfica «Raíces»">
       </div>
       <div class="form-row">
         <div class="field-group">
-          <label class="field-label">Disciplina</label>
+          <label class="field-label">Disciplina *</label>
           <select class="field-input field-select" id="proj-discipline">
             <option value="">Seleccioná</option>
-            <option>Ilustración</option>
-            <option>Fotografía</option>
-            <option>Escultura</option>
-            <option>Pintura</option>
-            <option>Diseño gráfico</option>
-            <option>Arte digital</option>
-            <option>Cerámica</option>
-            <option>Instalación</option>
-            <option>Performance</option>
+            <option>Ilustración</option><option>Fotografía</option><option>Escultura</option>
+            <option>Pintura</option><option>Diseño gráfico</option><option>Arte digital</option>
+            <option>Cerámica</option><option>Instalación</option><option>Performance</option>
           </select>
         </div>
         <div class="field-group">
@@ -364,7 +398,7 @@
       <div class="field-group">
         <label class="field-label">Descripción</label>
         <textarea class="field-input" id="proj-desc" rows="3"
-          placeholder="Contá de qué trata tu proyecto, qué técnica usaste, qué querías explorar..."></textarea>
+          placeholder="Contá de qué trata tu proyecto, qué técnica usaste, qué querías explorar…"></textarea>
       </div>
       <div class="field-group">
         <label class="field-label">Imagen del proyecto</label>
@@ -372,14 +406,14 @@
           <input type="file" accept="image/*" onchange="previewImage(this)">
           <div class="img-upload-icon">🖼</div>
           <div class="img-upload-text">
-            Arrastrá o hacé click para subir una imagen<br>
-            <span style="font-size:0.72rem;color:var(--ink3)">JPG, PNG, WEBP · hasta 10MB</span>
+            Arrastrá o hacé click para subir<br>
+            <span style="font-size:0.72rem;color:var(--ink3)">JPG, PNG, WEBP · hasta 10 MB</span>
           </div>
           <img class="img-preview" id="img-preview">
         </div>
       </div>
       <div class="field-group">
-        <label class="field-label">Etiquetas</label>
+        <label class="field-label">Etiquetas <span style="font-weight:300;color:var(--ink3)">(Enter para agregar · máx. 8)</span></label>
         <div class="tags-input" id="tags-container"
              onclick="document.getElementById('tag-input').focus()">
           <input class="tags-input-field" id="tag-input"
@@ -396,15 +430,85 @@
 </div>
 
 
-<!-- ═══════════════════════════════════════════════════════════
-     SCRIPTS (orden: datos → lógica → init)
-     ═══════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     MODAL — Perfil de artista
+     ═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="artist-modal">
+  <div class="modal artist-modal">
+    <div class="artist-modal-content"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     MODAL — Editar perfil propio
+     ═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="edit-profile-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Editar perfil</div>
+      <button class="modal-close" onclick="closeEditProfile()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label class="field-label">Nombre completo</label>
+        <input class="field-input" type="text" id="edit-name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Disciplina / Rol</label>
+        <input class="field-input" type="text" id="edit-role" placeholder="Ej: Ilustradora, Fotógrafo…">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Ubicación</label>
+        <input class="field-input" type="text" id="edit-location" placeholder="Ciudad, País">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Bio</label>
+        <textarea class="field-input" id="edit-bio" rows="3" placeholder="Contá quién sos y qué hacés…"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Sitio web</label>
+        <input class="field-input" type="text" id="edit-website" placeholder="tuportafolio.com">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeEditProfile()">Cancelar</button>
+      <button class="btn-accent"    onclick="saveProfile()">Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     MODAL — Detalle de proyecto (desde Explorar)
+     ═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="project-detail-modal">
+  <div class="modal">
+    <div class="project-detail-content"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     TOASTS
+     ═══════════════════════════════════════════════ -->
+<div id="toast-container"></div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS (orden: datos → lógica → UI → init)
+     ═══════════════════════════════════════════════ -->
 <script src="js/data.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/darkmode.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/navigation.js"></script>
 <script src="js/feed.js"></script>
 <script src="js/profile.js"></script>
 <script src="js/explore.js"></script>
+<script src="js/calls.js"></script>
 <script src="js/modal.js"></script>
 
 </body>

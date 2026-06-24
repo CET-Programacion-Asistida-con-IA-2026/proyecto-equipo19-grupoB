@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
    AUTH — login, registro, demo
-   me invitó una amiga
    ════════════════════════════════════════ */
 
 function switchTab(tab) {

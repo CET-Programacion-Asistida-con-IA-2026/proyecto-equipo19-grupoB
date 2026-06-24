@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
-   NAVEGACIÓN — cambio de secciones
-   me invitó una amiga
+   NAVEGACIÓN 
    ════════════════════════════════════════ */
 
 function showSection(name) {

@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════
-   VARIABLES & RESET — me invitó una amiga
+   VARIABLES & RESET — luz camara accion
    ════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap');
@@ -53,3 +53,57 @@ body {
   min-height: 100vh;
   font-size: 15px;
 }
+
+/* ════════════════════════════════════════
+   DARK MODE 
+   ════════════════════════════════════════ */
+body.dark-mode {
+  --crimson:       #c9334a;
+  --crimson2:      #e04060;
+  --crimson3:      #a02035;
+  --crimson-deep:  #6a1020;
+  --crimson-light: #3a1020;
+  --crimson-pale:  #2a0c14;
+
+  --gold:          #d4a84c;
+  --gold2:         #e8c86a;
+  --gold-light:    #2a2010;
+
+  --ink:           #f0e8ea;
+  --ink2:          #c8b0b5;
+  --ink3:          #8a7075;
+
+  --paper:         #1a0f12;
+  --paper2:        #221318;
+  --paper3:        #180c10;
+
+  --border:        #3a2028;
+  --border2:       #5a3040;
+
+  background: #180c10;
+  color: #f0e8ea;
+}
+
+body.dark-mode .topbar              { background: #1a0f12; }
+body.dark-mode .profile-card        { background: #1a0f12; }
+body.dark-mode .feed-card           { background: #1a0f12; }
+body.dark-mode .widget              { background: #1a0f12; }
+body.dark-mode .side-nav            { background: #1a0f12; }
+body.dark-mode .publish-box         { background: #1a0f12; }
+body.dark-mode .modal               { background: #1a0f12; }
+body.dark-mode .card-placeholder    { filter: brightness(0.7); }
+body.dark-mode .search-dropdown     { background: #1a0f12; }
+body.dark-mode .notif-panel         { background: #1a0f12; }
+body.dark-mode .card-dropdown       { background: #1a0f12; }
+body.dark-mode .landing-right       { background: #1a0f12; }
+body.dark-mode .call-card           { background: #1a0f12; }
+body.dark-mode .section-header-card { background: #1a0f12; }
+body.dark-mode .profile-hero        { background: #1a0f12; }
+body.dark-mode .comment-bubble      { background: #221318; }
+body.dark-mode .topbar-search input { background: #221318; color: var(--ink); }
+body.dark-mode .field-input         { background: #221318; color: var(--ink); border-color: var(--border); }
+body.dark-mode .tags-input          { background: #221318; }
+body.dark-mode .comment-input-wrap  { background: #221318; }
+body.dark-mode .img-upload          { border-color: var(--border); }
+body.dark-mode .profile-big-avatar  { border-color: #1a0f12; }
+body.dark-mode .profile-card-avatar { border-color: #1a0f12; }

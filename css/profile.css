@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
    PERFIL & EXPLORAR
-   me invitó una amiga
    ════════════════════════════════════════ */
 
 /* ── Perfil: hero con portada ── */
@@ -17,6 +16,7 @@
   position: relative;
   overflow: hidden;
   background: var(--crimson-deep);
+  z-index: 1;
 }
 /* Arco dorado */
 .profile-cover::before {
@@ -45,7 +45,7 @@
   position: absolute;
   right: 12px;
   bottom: 12px;
-  z-index: 2;
+  z-index: 6;
   background: rgba(0, 0, 0, 0.4);
   border: none;
   border-radius: 10px;
@@ -54,14 +54,15 @@
   font-size: 12px;
   cursor: pointer;
   font-family: 'Jost', sans-serif;
+  z-index: 3;
 }
 
 .profile-info-row {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 1rem;
   padding: 0 1.5rem;
-  margin-top: -32px;
+  margin-top: -28px;
 }
 
 .profile-big-avatar {
@@ -77,10 +78,11 @@
   color: #fff;
   flex-shrink: 0;
   outline: 3px solid var(--gold);
+  position: relative;
+  z-index: 2;
 }
 
-.profile-details      { flex: 1; padding-bottom: 1rem; }
-.profile-name         { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.profile-details { flex: 1; padding-top: 52px; padding-bottom: 0.5rem; }
 .profile-role-line    { font-size: 0.875rem; color: var(--ink3); margin: 3px 0; }
 .profile-location     { font-size: 0.8rem; color: var(--ink3); display: flex; align-items: center; gap: 4px; }
 .profile-location svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }

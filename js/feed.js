@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
-   FEED — construcción de tarjetas
-   me invitó una amiga
+   FEED 
    ════════════════════════════════════════ */
 
 // SVGs geométricos para placeholders sin imagen

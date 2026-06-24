@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
    DATA — usuarios y posts semilla
-   me invitó una amiga
    ════════════════════════════════════════ */
 
 const USERS = {

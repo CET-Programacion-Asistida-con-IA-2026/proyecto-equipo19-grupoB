@@ -1,6 +1,5 @@
 /* ════════════════════════════════════════
-   MODAL — publicar nuevo proyecto
-   me invitó una amiga
+   MODAL 
    ════════════════════════════════════════ */
 
 function openModal() {
