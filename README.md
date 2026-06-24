@@ -3,7 +3,7 @@ _Curso de Programación Asistida con IA - Chicas en Tecnología_ 🚀
 
 En este repositorio se presenta el sitio web realizado durante el curso de programación frontend de CET.
 
-<!--🚀 Link del proyecto en vivo: (agregar cuando esté desplegado)-->
+🚀 Link del proyecto en vivo: https://cet-programacion-asistida-con-ia-2026.github.io/proyecto-equipo19-grupoB/
 
 ---
 
